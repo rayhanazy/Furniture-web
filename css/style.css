@@ -1,0 +1,2344 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Ephesis&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+
+/* Reset */
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+*{
+    box-sizing: border-box;
+}
+  
+  body {
+    font-family: 'Inria Serif', serif;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Animasi untuk halaman yang keluar */
+  body.exit {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  /* Navbar Styling */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    padding: 0 50px;
+    margin-bottom: 90px;
+    background-color: #fff;
+    border-bottom: 2px solid #000000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Logo */
+  header .logo img {
+    width: 400px; /* Ukuran logo */
+    height: auto; /* Memastikan proporsi logo */
+    object-fit: contain;
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1100;
+    position: absolute;
+    right: 50px;
+  }
+  
+  .hamburger div {
+    width: 30px;
+    height: 2px;
+    background-color: black;
+    margin: 5px;
+    transition: transform 0.4s, opacity 0.4s;
+  }
+
+  /* Efek silang saat aktif */
+.hamburger.active div:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
+}
+  
+nav {
+  display: flex;
+  gap: 70px;
+  font-family: "Inria Serif", serif;
+  
+}
+  
+  header nav a {
+    text-decoration: none; /* Hilangkan garis bawah */
+    color: #333; /* Warna teks */
+    font-size: 22px; /* Ukuran font menu */
+    letter-spacing: 3px;
+    position: relative; /* Untuk efek hover */
+    padding: 10px 0;
+  }
+  
+  header nav a:hover {
+    color: #000; /* Warna saat hover */
+    transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
+  }
+  
+  header nav a:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000; /* Warna garis hover */
+    transition: width 0.3s ease;
+  }
+  
+  header nav a:hover:after {
+    width: 100%; /* Animasi garis hover */
+  }
+  
+  /* CSS untuk backdrop (latar belakang gelap) */
+  .darker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparansi */
+    display: none; /* Sembunyikan secara default */
+    z-index: 999; /* Pastikan berada di atas konten lainnya */
+  }
+  
+  /* Popup pencarian */
+  .search-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 100%; /* Memenuhi lebar layar */
+    width: 100%;
+    height: 180px; /* Tinggi area popup */
+    background-color: white; /* Latar belakang putih */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Bayangan lembut */
+    align-content: center;
+    transform: translateY(-180px); /* Sembunyikan di atas layar */
+    opacity: 0; /* Awalnya tidak terlihat */
+    transition: transform 1s ease, opacity 1s ease; /* Animasi halus */
+    z-index: 1000; /* Tetap di atas elemen lainnya */
+    border-bottom-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+  }
+  
+  /* Saat pop-up aktif (tampil) */
+  .search-popup.active {
+    transform: translateY(0); /* Turun ke posisi normal */
+    opacity: 1; /* Tampilkan */
+  }
+  
+  /* Menonaktifkan scroll pada body */
+  body.no-scroll {
+    overflow: hidden;
+  }
+  
+  /* Pastikan klik di backdrop tidak menutup pop-up */
+  .darker.active {
+    display: block;
+    pointer-events: none; /* Nonaktifkan interaksi dengan backdrop */
+  }
+  
+  .darker.no-click {
+    pointer-events: none; /* Overlay tidak bisa diklik */
+  }
+  
+  /* Tombol tutup pop-up */
+  .close-icon {
+    pointer-events: all; /* Pastikan tombol close bisa diklik */
+  }
+  
+  /* Kotak pencarian */
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antar elemen */
+    width: 800px; /* Lebar kotak pencarian */
+    max-width: 800px; /* Batas maksimal */
+    margin-left: 370px;
+    position: relative;
+  }
+  
+  /* Input pencarian */
+  .search-container input[type="text"] {
+    flex: 1; /* Mengisi ruang yang tersedia */
+    padding: 10px 0 10px 15px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #777877;
+  }
+  
+  .search .search-popup .search-container input {
+    font-family: 'Fustat';
+    font-size: 20px;
+    margin: 0;
+    padding: 0 0 5px 0;
+  }
+  
+  /* Ikon pencarian di kanan */
+  .search-container .input-icon {
+    position: absolute;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+  
+  /* Tombol tutup (close) */
+  .search-container .close-icon {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  
+  button {
+    background-color: white;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Ikon User dan Search */
+  header .search img {
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+  }
+  header .user img {
+    width: 45px;
+    height: auto;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  header .user img:hover {
+    text-decoration: none;
+  }
+  
+  header .search img:hover,
+  header .user img:hover {
+    color: #000; /* Warna saat hover */
+    transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
+    text-decoration: none;
+  }
+  
+  /* Wrapper untuk User dan Search */
+  header .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Jarak antar ikon */
+  }
+
+
+  
+  /* Slider */
+  .slider {
+    position: relative;
+    overflow: hidden;
+    height: 80vh;
+  }
+  .slider-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .slides {
+    display: flex;
+    transition: transform 1.5s ease-in-out;
+  }
+  .slide {
+    min-width: 100%;
+    position: relative;
+    text-align: center;
+  }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter:brightness(60%);
+    
+  }
+  .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  .text h1 {
+    font-family: 'Inria Serif', serif;
+    font-size: 80px;
+    font-weight: 200;
+    margin: 5px;
+  }
+  
+ /* Tombol Arrow */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  width: 40px; /* Lebar tombol */
+  height: 60px; /* Panjang tombol */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 1;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: opacity 0.5s ease;
+}
+
+.arrow:hover {
+  background-color: transparent;
+  transform: translateY(-50%) scale(1.1); /* Efek sedikit membesar */
+}
+
+.arrow.hidden {
+  opacity: 0; /* Sembunyikan tombol */
+  pointer-events: none; /* Nonaktifkan klik */
+}
+
+.arrow.left {
+  left: 90px; /* Jarak dari sisi kiri */
+}
+
+.arrow.right {
+  right: 90px; /* Jarak dari sisi kanan */
+}
+
+.since {
+  background-color: #ffffff; /* Warna background putih */
+  text-align: center;
+  padding: 0 20px 10px 20px; /* Spasi di atas dan bawah */
+}
+
+.since h1 {
+  font-family: 'Inria Serif', serif;
+  font-size: 36px; /* Ukuran font besar untuk judul */
+  font-weight: 500;
+  margin-bottom: 10px; /* Jarak bawah dengan teks berikutnya */
+  color: #000000; /* Warna teks */
+  letter-spacing: 5px;
+}
+
+.since .subtitle {
+  font-family: 'Instrument Sans', serif;
+  font-size: 16px; /* Ukuran teks lebih kecil */
+  font-weight: 400; /* Tidak terlalu tebal */
+  color: #282727; /* Warna abu-abu untuk subtitle */
+  margin: 0px; /* Jarak antar teks */
+  text-transform: uppercase; /* Huruf kapital semua */
+  letter-spacing: 1.2px; /* Spasi antar huruf */
+}
+
+/* Luxury Section Styling */
+.luxury-section {
+  background-color: #2a2a2a;
+  padding: 10px 30px 0px 30px;
+  text-align: center;
+  width: auto;
+  height: 520px;
+  margin-top: 60px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  
+}
+
+.luxury-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  padding-left: 230px;
+}
+
+.luxury-text {
+  max-width: 600px;
+  text-align: left;
+  font-family: 'Inria Serif', serif;
+}
+
+.luxury-text h2 {
+  font-family: 'Beau Rivage', cursive;
+  font-size: 70px;
+  font-weight: 200;
+  color: #d0aa84;
+  height: 60px;
+  margin: 0;
+}
+
+.luxury-text h3 {
+  font-family: 'Beau Rivage', cursive;
+  font-size: 70px;
+  font-weight: 200;
+  color: #d0aa84;
+  margin: 0;
+}
+
+.luxury-text .luxury-subtitle {
+  font-family: 'Aboreto', system-ui;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}     
+
+.luxury-text p {
+  font-family: 'Abel', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.luxury-images1, .luxury-images2 {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-top: 50px;
+}
+
+.luxury-images1 img {
+  width: 100%;
+  margin-top: 20px;
+  max-width: 400px;
+  height: 349px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 60px;
+}
+
+.luxury-images2 img {
+  width: 95%;
+  max-width: 300px;
+  height: 260px;
+  margin-top: 20px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.find-products {
+  margin-top: 40px;
+}
+
+.find-products p {
+  font-size: 38px;
+  font-family: 'Inria serif', serif;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Shop By Room Styling */
+.shop-by-room {
+  text-align: center;
+  padding: 20px;
+  width: auto;
+  height: 700px;
+}
+
+.shop-by-room h2 {
+  font-family: 'Fustat', sans-serif;
+  letter-spacing: 3px;
+  margin: 0;
+  padding-bottom: 70px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.rooms {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.room {
+  position: relative;
+  width: 310px;
+  height: 465px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.room img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.room .overlays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: start;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
+
+.room:hover .overlays {
+  opacity: 1;
+}
+
+.room .overlays h3 {
+  font-family: 'Istok web', sans-serif;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+
+.shop-now {
+  font-family: 'Fustat', sans-serif;
+  font-weight: 300;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #b3b3b3;
+  opacity: 80%;
+  border: none;
+  letter-spacing: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.shop-now:hover {
+  color: white;
+  background-color: #b3b3b3;
+  transform: scale(1.05);
+}
+
+.shop-now i {
+  font-size: 1.2em;
+}
+
+/* Category Styling */
+.category-section {
+  padding: 50px 20px;
+  background-image: url(../img/bgkertas.jpg);
+  text-align: center;
+  box-shadow: 
+    0px 4px 6px rgba(0, 0, 0, 0.3), /* Drop shadow */
+    inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
+}
+
+.category-section h2 {
+  font-family: 'Fustat', sans-serif;
+  letter-spacing: 5px;
+  font-weight: 400;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 70px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  padding: 20px 80px;
+  justify-items: center;
+}
+
+.card {
+  position: relative;
+  display: inline-block;
+  width: 390px;
+  height: 220px; /* Pastikan tinggi card cukup untuk elemen gambar dan teks */
+  overflow: hidden;
+}
+
+.card img {
+  width: 390px;
+  height: 175px;
+  object-fit: cover;
+}
+
+.info {
+  position: absolute;
+  bottom: 5px; /* Jarak dari bawah card */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info h3 {
+  font-family: 'Fustat', sans-serif;
+  font-weight: 500;
+  margin: 0;
+  font-size: 20px;
+  color: #000000; /* Ubah warna agar terlihat di atas gambar */
+
+}
+
+.info a {
+  font-family: 'Fustat', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 5px 10px;
+}
+
+.info a .fa {
+  color: black;
+}
+
+.info a:hover {
+  transform: translateY(0) scale(1.1);
+}
+
+/* Shop By type of wood Styling */
+.type-wood {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  width: auto;
+  height: 700px;
+}
+
+.type-wood h2 {
+  font-family: 'Fustat', sans-serif;
+  letter-spacing: 3px;
+  margin: 0;
+  padding-bottom: 70px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.woods {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.wood {
+  position: relative;
+  width: 310px;
+  height: 465px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.wood img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: start;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
+
+.wood:hover .title {
+  opacity: 1;
+}
+
+.title h3 {
+  font-family: 'Istok web', sans-serif;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+
+.shop-now {
+  font-family: 'Fustat', sans-serif;
+  font-weight: 300;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #b3b3b3;
+  opacity: 80%;
+  border: none;
+  letter-spacing: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.shop-now:hover {
+  color: white;
+  background-color: #b3b3b3;
+  transform: scale(1.05);
+}
+
+.shop-now i {
+  font-size: 1.2em;
+}
+
+/* Services Styling */
+.services-section {
+  padding: 20px 20px;
+  background-image: url(../img/bgkertas.jpg);
+  text-align: center;
+  box-shadow: 
+    0px 4px 6px rgba(0, 0, 0, 0.3), /* Drop shadow */
+    inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
+}
+
+.services-section h2 {
+  font-family: 'Fustat', sans-serif;
+  letter-spacing: 5px;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 50px;
+}
+
+.art-luxury {
+  padding: 80px 140px 80px 120px  ;
+}
+
+.art-luxury h2 {
+  font-family: 'Instrument Sans', serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 20px 0;
+}
+
+.art-luxury p {
+  font-family: 'Abel', sans-serif;
+  line-height: 1.6;
+  font-size: 20px;
+
+}
+
+.customers-section {
+  display: flex;
+  overflow: hidden;
+  background-image: url(../img/bgkertas.jpg);
+  position: relative;
+  width: 100%;
+  box-shadow: 
+    0px 4px 6px rgba(0, 0, 0, 0.3), /* Drop shadow */
+    inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
+}
+
+.customer {
+  padding: 0 50px 0 120px;
+  flex: 0 0 100%;
+  transition: transform 0.5s ease-in-out;
+  display: none;
+  opacity: 0; /* Start with opacity 0 */
+  transition: transform 2s ease-in-out, opacity 2s ease-in-out; /* Smooth transition */
+}
+
+.fa {
+  color: #fbbc04;
+  margin-left: 5px;
+}
+
+.customer.active {
+  display: block;
+  opacity: 1; /* Fade in when active */
+}
+
+.customer.left {
+  transform: translateX(-100%); /* Slide from the left */
+}
+
+.customer.right {
+  transform: translateX(100%); /* Slide from the right */
+}
+
+.customer.center {
+  transform: translateX(0); /* Center position */
+}
+
+/* Animations for slide in */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the slide-in effect */
+.customer.slide-from-left {
+  animation: slideInFromLeft 2s ease-out forwards;
+}
+
+.customer.slide-from-right {
+  animation: slideInFromRight 2s ease-out forwards;
+}
+
+.customer h1 {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Beau Rivage', cursive;
+  color: #d0aa84;
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: 80px;
+  font-weight: 300;
+  height: 80px;
+}
+
+.customer h1 img {
+  width: 50px;
+  height: 50px;
+}
+
+.customer h2 {
+  font-family: 'Aboreto', system-ui;
+  font-weight: 500;
+  font-size: 40px;
+  margin: 0;
+}
+
+.customer p {
+  font-family: 'Agdasima', sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+  margin-right: 600px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.customer h3 {
+  font-family: 'Agdasima', sans-serif;
+  letter-spacing: 1px;
+  font-size: 25px;
+  font-weight: 400;
+  margin: 20px 0 40px 0;
+}
+
+.customer .arrows img {
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.arrows {
+  display: flex;
+  justify-items: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 200px;
+}
+
+.arrow-right:hover {
+  transform: translateY(0) scale(1.1);
+}
+
+.arrow-left:hover {
+  transform: translateY(0) scale(1.1);
+}
+
+.dedicated-section {
+  background-color: #202020;
+  width: auto;
+  height: 500px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3)
+}
+
+.dedicated {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.dedicated img {
+  max-width: 100%;
+  width: 750.18px;
+  height: 500px;
+}
+
+.dedicated h2 {
+  font-family: 'Beau Rivage', cursive;
+  color: #d0aa84;
+  font-size: 50px;
+  font-weight: 200;
+  margin: 80px 0 0 70px;
+  line-height: 1.1;
+}
+
+.dedicated .main-text {
+  font-family: 'Aboreto', system-ui;
+  font-size: 35px;
+  color: white;
+  margin: 65px 50px 0 0;
+}
+
+.contact {
+  font-size: 20px;
+  font-family: 'Fustat', sans-serif;
+  padding: 10px 30px 5px 30px;
+  font-weight: 300;
+  border: 2px solid #ffffff;
+  color: white;
+  cursor: pointer;
+  display: inline-block; /* Agar transformasi berlaku pada link */
+  transition: transform 0.3s ease; /* Menambahkan transisi yang halus */
+}
+
+.contact a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+.contact:hover {
+  transform: scale(1.1); /* Membuat tombol membesar saat hover */
+}
+
+.contact a:hover {
+  transform: scale(1.1); /* Efek zoom yang sama pada link */
+}
+
+
+.showroom h2 {
+  font-family: 'Fustat', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  justify-content: center;
+  display: flex;
+  padding-top: 70px;
+  letter-spacing: 5px;
+}
+
+.showroom p {
+  display: flex;
+  justify-content: center;
+  font-family: 'Aboreto', system-ui;
+  font-size: 25px;
+  padding-top: 50px;
+}
+
+.info-container {
+  display: flex;
+  font-family: 'Istok Web', sans-serif;
+  max-width: 1234px;  
+  justify-content: space-between;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.info-container {
+  margin-top: 30px;
+  align-items: center;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.info-item img {
+  margin-top: 8px;
+}
+
+.info-item span {
+  font-size: 25px;
+  font-family: 'Istok Web', serif;
+  color: #000000;
+  line-height: 1.5;
+}
+
+.maps {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-image: url(../img/bgkertas.jpg);
+  padding: 20px 40px 0 40px;
+  box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 10%;
+  height: 340px;
+}
+
+.footer-section h4 {
+  font-family: 'Istok Web', serif;
+  font-weight: 300;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+  font-family: 'Fustat', serif;
+  font-size: 20px;
+  line-height: 1.8;
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #007BFF;
+}
+
+.footer-section p {
+  margin: 5px 0;
+  font-size: 20px;
+  line-height: 2;
+  font-family: 'Fustat', serif;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  line-height: 1.8;
+  font-family: 'Fustat', serif;
+}
+
+.footer-section a:hover {
+  color: #007BFF;
+}
+
+.footer-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-section input {
+  max-width: 100%;
+  width: 286px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 37px;
+  border-radius: 4px;
+}
+
+ .footer-section button .subscribe {
+  background-color: white;
+  font-family: 'Fustat', serif;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  padding: 5px 0 5px 15px;
+  font-size: 18px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  max-width: 100%;
+  width: 286px;
+  color: black;
+}
+
+.footer-section button {
+  display: flex;
+  max-width: 100%;
+  width: 286px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 37px;
+  border-radius: 4px;
+  gap: 10px;
+  align-items: center;
+}
+
+ .footer-section .subscribe img {
+  width: 25px;;
+  height: auto;
+}
+
+.footer-bottom {
+  display: flex;
+  background-image: url(../img/bgkertas.jpg);
+  padding: 0 110px 20px 100px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #000000;
+}
+
+.footer-bottom .socials-icon {
+  flex: 1; /* Memberikan ruang untuk ikon */
+}
+
+.footer-bottom .socials-icon a img {
+  width: 24px;
+  height: 24px;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.footer-bottom .footer-info {
+  font-family: 'Instrument Sans', serif;
+  font-size: 16px;
+  text-align: center; /* Paragraf di tengah */
+  flex: 1;
+}
+
+.footer-bottom .privacy-policy {
+  font-family: 'Instrument Sans', serif;
+  font-size: 16px;
+  text-align: right; /* "Privacy & Cookies Policy" di kanan */
+  flex: 1;
+}
+
+.footer-bottom a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+
+/* Base Popup Styles */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9); /* Start small */
+  opacity: 0; /* Initially invisible */
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  background-color: white;
+  padding: 40px;
+  border-radius: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-width: 100%;
+  width: 1300px;
+  height: 800px;
+  pointer-events: none;
+}
+
+.popup.show {
+  display: block;
+  transform: translate(-50%, -50%) scale(0.9); /* Full size when shown */
+  opacity: 1; /* Fully visible */
+  pointer-events: auto;
+}
+
+.popup.hide {
+  transform: translate(-50%, -50%) scale(0.9); /* Slightly small */
+  opacity: 0;
+}
+
+/* Overlay (Dark Background) */
+.darkers {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Overlay is below popups */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.darkers.active {
+  display: block;
+  opacity: 1;
+}
+
+.darkers.no-click {
+  pointer-events: none; /* Overlay tidak bisa diklik */
+}
+
+.close-popup {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  background-color: transparent;
+  color: #d0aa84;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  z-index: 1010; /* Ensures it stays on top */
+}
+
+.close-popup:hover {
+  transform: scale(1.1);
+}
+
+/* Make sure the icon is centered properly */
+.close-popup i {
+  font-size: 40px;
+  color: #d0aa84;
+}
+
+.close-popup:hover i {
+  color: #d0aa84;
+}
+
+/* Popup Container Styles */
+.popup-container {
+  display: grid;
+  justify-items: center;
+  margin-top: 50px;
+}
+
+.popup-container h1 {
+  font-family: 'Ephesis', serif;
+  font-weight: 300;
+  color: #d0aa84;
+  letter-spacing: 15px;
+  font-size: 80px;
+  margin-bottom: 5px;
+}
+
+.popup-container h2 {
+  font-family: 'Aboreto';
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #000000;
+  margin: 0 0 20px 0;
+}
+
+.popup-container form {
+  margin-left: 0px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.popup .popup-container .signin-form {
+  margin-left: 0;
+  margin-top: 40px;
+  display: grid;
+  gap: 50px;
+  grid-template-columns: 0fr;
+}
+
+.popup-container .password-input {
+  max-width: 100%;
+  width: 100%;
+  grid-column: span 2;
+}
+
+.popup-container input {
+  max-width: 100%;
+  font-family: 'Fustat';
+  width: 480px;
+  padding: 12px;
+  margin: 20px;
+  border: none;
+  border-bottom: 1px solid #777877;
+  font-size: 18px;
+  outline: none;
+}
+
+.popup-container .signin-form input {
+  max-width: 100%;
+  font-family: 'Fustat';
+  width: 1000px;
+  padding: 12px;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid #777877;
+  font-size: 18px;
+  outline: none;
+}
+
+.popup-container button {
+  background-color: transparent;
+  color: #d0aa84;
+  border: 1px solid #d0aa84;
+  margin-top: 100px;
+  padding: 7px 40px;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-family: 'Fustat';
+  cursor: pointer;
+}
+
+.popup-container .text-signin {
+  background-color: transparent;
+  color: #d0aa84;
+  border: 1px solid #d0aa84;
+  margin-top: 70px;
+  padding: 7px 40px;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-family: 'Fustat';
+  cursor: pointer;
+}
+
+.popup-container button:hover {
+  background-color: #d0aa84;
+  color: white;
+}
+
+.popup-container button .close-popup {
+  font-size: 18px;
+  font-family: 'Fustat';
+}
+
+.popup-container .popup-link {
+  font-size: 20px;
+  font-family: 'Fustat';
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.popup-container .popup-link span {
+  font-size: 20px;
+  font-family: 'Fustat';
+  color: #d0aa84;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.popup-container .popup-link span:hover {
+  text-decoration: underline;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 1500px) {
+  .luxury-content {
+    padding-left: 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+  .shop-by-room {
+    height: auto; /* Biarkan tinggi menyesuaikan konten */
+    padding: 20px 10px; /* Tambahkan padding agar lebih rapi */
+  }
+
+  .shop-by-room h2 {
+    font-size: 24px; /* Perkecil ukuran heading */
+    padding-bottom: 50px; /* Sesuaikan jarak bawah */
+  }
+
+  .rooms {
+    gap: 30px; /* Kurangi jarak antar item */
+  }
+
+  .room {
+    width: 280px; /* Kurangi ukuran card */
+    height: 420px;
+  }
+
+  .room .overlays {
+    padding-bottom: 20px; /* Kurangi padding */
+    padding-left: 15px;
+  }
+
+  .room .overlays h3 {
+    font-size: 22px; /* Ukuran teks lebih kecil */
+    letter-spacing: 3px;
+  }
+
+  .shop-now {
+    font-size: 14px; /* Ukuran teks lebih kecil */
+    padding: 8px;
+  }
+
+  .container {
+    padding: 20px 40px; /* Kurangi padding agar lebih pas */
+    
+  }
+
+  .card {
+    width: 350px; /* Perkecil ukuran card */
+  }
+
+  .card img {
+    width: 350px;
+    height: 160px;
+  }
+
+  .info h3,
+  .info a {
+    font-size: 18px; /* Perkecil teks */
+  }
+
+  .type-wood {
+    height: auto; /* Biarkan tinggi menyesuaikan */
+    padding: 20px 10px;
+  }
+
+  .type-wood h2 {
+    font-size: 24px; /* Perkecil ukuran heading */
+    padding-bottom: 50px;
+  }
+
+  .woods {
+    gap: 30px; /* Kurangi jarak antar item */
+  }
+
+  .wood {
+    width: 280px; /* Perkecil ukuran card */
+    height: 420px;
+  }
+
+  .title {
+    padding-bottom: 20px;
+    padding-left: 15px;
+  }
+
+  .title h3 {
+    font-size: 22px; /* Ukuran teks lebih kecil */
+    letter-spacing: 3px;
+  }
+
+  .shop-now {
+    font-size: 14px; /* Ukuran teks lebih kecil */
+    padding: 8px;
+  }
+  
+}
+
+@media screen and (max-width: 1300px) {
+  .slider {
+    height: 70vh; /* Kurangi tinggi slider */
+  }
+  .slide img {
+    object-fit: cover;
+  }
+  /* Ukuran Teks */
+  .text h1 {
+    font-size: 70px; /* Perkecil teks agar tidak terlalu besar */
+  }
+
+  /* Tombol Arrow */
+  .arrow {
+    width: 35px; /* Perkecil tombol */
+    height: 50px; /* Perpendek tombol */
+  }
+
+  .arrow.left {
+    left: 40px; /* Kurangi jarak dari kiri */
+  }
+
+  .arrow.right {
+    right: 40px; /* Kurangi jarak dari kanan */
+  }
+
+  .since {
+    padding: 0 15px 8px 15px; /* Kurangi padding agar lebih rapi */
+  }
+
+  .since h1 {
+    font-size: 28px; /* Perkecil ukuran font agar tetap proporsional */
+    letter-spacing: 3px; /* Kurangi spasi antar huruf */
+  }
+
+  .since .subtitle {
+    font-size: 14px; /* Ukuran subtitle lebih kecil */
+    letter-spacing: 1px; /* Kurangi spasi antar huruf */
+  }
+
+  .luxury-section {
+    height: auto; /* Agar tinggi menyesuaikan konten */
+    padding: 20px; /* Tambahkan padding agar lebih rapi */
+  }
+
+  .luxury-content {
+    padding-left: 0; /* Hilangkan padding kiri agar lebih proporsional */
+    flex-direction: row; /* Ubah menjadi kolom di layar kecil */
+    align-items: center;
+    gap: 20px;
+  }
+
+  .luxury-text {
+    max-width: 100%; /* Biarkan teks memenuhi container */
+  }
+
+  .luxury-text h2, 
+  .luxury-text h3 {
+    font-size: 50px; /* Kurangi ukuran judul agar tetap terbaca */
+  }
+
+  .luxury-text .luxury-subtitle {
+    font-size: 18px; /* Perkecil ukuran subtitle */
+  }
+
+  .luxury-text p {
+    font-size: 14px; /* Ukuran teks lebih kecil agar tidak terlalu panjang */
+  }
+
+  .luxury-images1, 
+  .luxury-images2 {
+    flex-direction: column; /* Ubah menjadi kolom untuk layar kecil */
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .luxury-images1 img, 
+  .luxury-images2 img {
+    max-width: 100%; /* Biarkan gambar menyesuaikan layar */
+    height: 100px; /* Sesuaikan tinggi otomatis */
+    margin-left: 10px; /* Hilangkan margin kiri */
+    margin-top: 0;
+
+  }
+
+  .find-products p {
+    font-size: 32px; /* Kurangi ukuran teks agar lebih pas */
+  }
+
+  .shop-by-room {
+    height: auto; /* Biarkan tinggi menyesuaikan konten */
+    padding: 20px 10px; /* Tambahkan padding agar lebih rapi */
+  }
+
+  .shop-by-room h2 {
+    font-size: 24px; /* Perkecil ukuran heading */
+    padding-bottom: 50px; /* Sesuaikan jarak bawah */
+  }
+
+  .rooms {
+    gap: 30px; /* Kurangi jarak antar item */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  .room {
+    width: 280px; /* Kurangi ukuran card */
+    height: 420px;
+  }
+
+  .room .overlays {
+    padding-bottom: 20px; /* Kurangi padding */
+    padding-left: 10px;
+  }
+
+  .room .overlays h3 {
+    font-size: 22px; /* Ukuran teks lebih kecil */
+    letter-spacing: 3px;
+  }
+
+  .shop-now {
+    font-size: 14px; /* Ukuran teks lebih kecil */
+    padding: 8px;
+  }
+
+  .container {
+    padding: 20px 40px; /* Kurangi padding agar lebih pas */
+  }
+
+  .card {
+    width: 350px; /* Perkecil ukuran card */
+  }
+
+  .card img {
+    width: 350px;
+    height: 160px;
+  }
+
+  .info h3,
+  .info a {
+    font-size: 18px; /* Perkecil teks */
+  }
+
+  .type-wood {
+    height: auto; /* Biarkan tinggi menyesuaikan */
+    padding: 20px 10px;
+    margin-top: 20px;
+  }
+
+  .type-wood h2 {
+    font-size: 24px; /* Perkecil ukuran heading */
+    padding-bottom: 50px;
+  }
+
+  .woods {
+    gap: 30px; /* Kurangi jarak antar item */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  .wood {
+    width: 280px; /* Perkecil ukuran card */
+    height: 420px;
+  }
+
+  .title {
+    padding-bottom: 20px;
+    padding-left: 10px;
+  }
+
+  .title h3 {
+    font-size: 22px; /* Ukuran teks lebih kecil */
+    letter-spacing: 3px;
+  }
+
+  .shop-now {
+    font-size: 14px; /* Ukuran teks lebih kecil */
+    padding: 8px;
+  }
+
+  .art-luxury {
+    padding: 60px 100px; /* Kurangi padding agar lebih proporsional */
+  }
+
+  .art-luxury h2 {
+    font-size: 28px;
+  }
+
+  .art-luxury p {
+    font-size: 18px;
+  }
+
+  .customers-section {
+    flex-direction: column; /* Ubah menjadi layout vertikal */
+    align-items: center;
+  }
+
+  .customer {
+    padding: 0 60px;
+  }
+
+  .customer h1 {
+    font-size: 60px; /* Perkecil ukuran */
+  }
+
+  .customer h2 {
+    font-size: 35px;
+  }
+
+  .customer p {
+    font-size: 26px;
+    margin-right: 400px; /* Kurangi margin kanan */
+  }
+
+  .dedicated-section {
+    height: auto;
+  }
+
+  .dedicated img {
+    width: 600px; /* Kurangi ukuran gambar agar tetap proporsional */
+    height: auto;
+  }
+
+  .dedicated h2 {
+    font-size: 45px;
+    margin: 40px 0 0 20px;
+  }
+
+  .dedicated .main-text {
+    font-size: 30px;
+  }
+
+  nav {
+    flex-direction: column;
+    position: fixed;
+    top: 120px;
+    width: 15%;
+    gap: 40px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    padding: 20px 0 20px 20px;
+    right: -250px;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 20px;
+  }
+
+  nav.active {
+    display: flex;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav a:hover {
+    transform: translateY(0) scale(1.0);
+  }
+
+  nav a:after {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .arrow.left {
+    display: none;
+  }
+
+  .arrow.right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .text h1 {
+    font-size: 70px; /* Perkecil teks agar tidak terlalu besar */
+  }
+
+  .dedicated-section {
+    height: auto;
+  }
+
+  .dedicated img {
+    object-fit: cover;
+  }
+
+  .dedicated h2 {
+    font-size: 38px;
+    margin: 30px 0 0 20px;
+  }
+
+  .dedicated .main-text {
+    font-size: 28px;
+    margin: 20px 0;
+  }
+
+  .arrows {
+    display: none;
+  }
+
+  .contact {
+    font-size: 18px;
+    padding: 8px 25px;
+  }
+
+  .showroom h2 {
+    font-size: 26px;
+  }
+
+  .showroom p {
+    font-size: 22px;
+  }
+
+  .info-container {
+    flex-direction: column; /* Susun vertikal */
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .info-item img {
+    margin: 0;
+  }
+
+  .info-item span {
+    font-size: 22px;
+  }
+  
+  .services-section {
+    padding: 30px 10px;
+  }
+
+  .art-luxury {
+    padding: 50px 40px;
+  }
+
+  .art-luxury h2 {
+    font-size: 26px;
+  }
+
+  .art-luxury p {
+    font-size: 16px;
+  }
+
+  .customer {
+    padding: 50px 40px;
+  }
+
+  .customer h1 {
+    font-size: 50px;
+  }
+
+  .customer h2 {
+    font-size: 30px;
+  }
+
+  .customer p {
+    font-size: 22px;
+    margin-right: 200px;
+  }
+
+  .customer h3 {
+    font-size: 22px;
+  }
+  .category-section {
+    padding: 40px 15px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .card {
+    width: 320px;
+  }
+
+  .card img {
+    width: 320px;
+    height: 140px;
+  }
+
+  .info h3 {
+    font-size: 16px;
+  }
+
+  .type-wood h2 {
+    font-size: 22px;
+  }
+
+  .woods {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .wood {
+    width: 250px;
+    height: 380px;
+  }
+
+  .title h3 {
+    font-size: 20px;
+  }
+
+  .shop-now {
+    font-size: 14px;
+    padding: 7px;
+  }
+  .find-products p {
+    font-size: 28px;
+  }
+
+  .shop-by-room h2 {
+    font-size: 22px;
+  }
+
+  .rooms {
+    gap: 20px; /* Kurangi lagi jarak antar item */
+    padding: 20px;
+  }
+
+  .room {
+    width: 250px;
+    height: 380px;
+  }
+
+  .room .overlays h3 {
+    font-size: 20px;
+  }
+
+  .shop-now {
+    font-size: 14px;
+    padding: 7px;
+  }
+  nav {
+    flex-direction: column;
+    position: fixed;
+    top: 128px;
+    width: 25%;
+    gap: 40px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    padding: 20px 0 20px 20px;
+    right: -250px;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 20px;
+  }
+
+  nav.active {
+    display: flex;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav a:hover {
+    transform: translateY(0) scale(1.0);
+  }
+
+  nav a:after {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .footer {
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 20px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+  header {
+    height: auto;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+  .info {
+    position: relative;
+  }
+  .footer-section h4 {
+    margin-top: 33px;
+    font-size: 23px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav a:after {
+    display: none;
+  }
+  .category-section h2 {
+    margin-bottom: 50px;
+  }
+  .room img {
+    width: 100%;
+    height: 100%;
+  }
+  .text h1 {
+    font-size: 50px; /* Perkecil teks agar tidak terlalu besar */
+  }
+  header {
+    margin-bottom: 50px;
+  }
+
+  header .logo img {
+    width: 300px;
+  }
+  .dedicated img {
+    width: 400px;
+    height: auto;
+  }
+  .dedicated h2 {
+    font-size: 32px;
+  }
+
+  .dedicated .main-text {
+    font-size: 24px;
+  }
+
+  .contact {
+    font-size: 16px;
+    padding: 6px 20px;
+  }
+
+  .showroom h2 {
+    font-size: 24px;
+  }
+
+  .showroom p {
+    font-size: 20px;
+  }
+
+  .info-item span {
+    font-size: 20px;
+  }
+  .art-luxury {
+    padding: 40px 20px;
+  }
+
+  .art-luxury h2 {
+    font-size: 24px;
+  }
+
+  .art-luxury p {
+    font-size: 15px;
+  }
+
+  .customers-section {
+    display: block; /* Biarkan konten menumpuk */
+    text-align: center;
+    padding: 20px;
+  }
+
+  .customer {
+    padding: 0 20px;
+  }
+
+  .customer h1 {
+    font-size: 40px;
+  }
+
+  .customer h2 {
+    font-size: 28px;
+  }
+
+  .customer p {
+    font-size: 18px;
+    margin-right: 0;
+  }
+
+  .customer h3 {
+    font-size: 20px;
+  }
+
+  .arrows {
+    display: none;
+  }
+
+  .arrows img {
+    width: 40px;
+    height: 40px;
+  }
+  .category-section {
+    padding: 30px 10px;
+  }
+
+  .container {
+    grid-template-columns: 1fr; /* Ubah jadi satu kolom */
+    gap: 0;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 320px;
+  }
+
+  .card img {
+    width: 100%;
+    height: 150px;
+  }
+
+  .info h3 {
+    font-size: 16px;
+  }
+
+  .type-wood h2 {
+    font-size: 20px;
+  }
+
+  .wood {
+    width: 90%;
+    height: auto;
+  }
+
+  .title h3 {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .shop-now {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .luxury-text h2, 
+  .luxury-text h3 {
+    font-size: 40px; /* Ukuran lebih kecil untuk layar HP */
+  }
+
+  .luxury-text .luxury-subtitle {
+    font-size: 16px; 
+  }
+
+  .luxury-text p {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .find-products p {
+    font-size: 24px;
+  }
+
+  .shop-by-room h2 {
+    font-size: 20px;
+  }
+
+  .room {
+    width: 90%; /* Lebarkan agar menyesuaikan layar */
+    height: auto;
+  }
+
+  .room .overlays h3 {
+    font-size: 12px;
+  }
+
+  .shop-now {
+    font-size: 10px;
+    padding: 6px;
+  }
+  nav {
+    flex-direction: column;
+    position: fixed;
+    top: 108px;
+    width: 30%;
+    gap: 40px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    padding: 20px 0 20px 20px;
+    right: -250px;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 20px;
+  }
+
+  nav.active {
+    display: flex;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav a:hover {
+    transform: translateY(0) scale(1.0);
+  }
+
+  nav a:after {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+  .luxury-section {
+    padding: 20px;
+  }
+  
+}
+
+@media screen and (max-width: 576px) {
+  .text h1 {
+    font-size: 40px; /* Perkecil teks agar tidak terlalu besar */
+  }
+  .slider {
+    height: 40vh; /* Kurangi tinggi slider */
+  }
+  header .logo img {
+    width: 200px;
+  }
+  .dedicated-section {
+    height: auto; /* Biarkan menyesuaikan konten */
+  }
+
+  .dedicated img {
+    max-width: 100%;
+    width: 250px;
+    height: auto;
+  }
+
+  .dedicated h2 {
+    font-size: 20px;
+    margin: 20px 0 0 10px;
+  }
+
+  .dedicated .main-text {
+    font-size: 10px;
+  }
+
+  .contact {
+    font-size: 10px;
+    padding: 5px 15px;
+  }
+
+  .showroom h2 {
+    font-size: 22px;
+  }
+
+  .showroom p {
+    font-size: 18px;
+  }
+
+  .info-item span {
+    font-size: 18px;
+  }
+  .art-luxury {
+    padding: 30px 15px;
+  }
+
+  .art-luxury h2 {
+    font-size: 22px;
+  }
+
+  .art-luxury p {
+    font-size: 14px;
+  }
+
+  .customer h1 {
+    font-size: 35px;
+  }
+
+  .customer h2 {
+    font-size: 24px;
+  }
+
+  .customer p {
+    font-size: 16px;
+  }
+
+  .customer h3 {
+    font-size: 18px;
+  }
+  .arrows {
+    display: none;
+  }
+  .arrows img {
+    width: 35px;
+    height: 35px;
+  }
+  nav {
+    flex-direction: column;
+    position: fixed;
+    top: 87px;
+    width: 40%;
+    gap: 40px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    padding: 20px 0 20px 20px;
+    right: -250px;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 20px;
+  }
+
+  nav.active {
+    display: flex;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav a:hover {
+    transform: translateY(0) scale(1.0);
+  }
+
+  nav a:after {
+    display: none;
+  }
+
+  header nav a {
+    font-size: 12px;
+    padding: 0px;
+
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
