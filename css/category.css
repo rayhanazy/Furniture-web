@@ -1,0 +1,697 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+*{
+    box-sizing: border-box;
+}
+  
+body {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animasi untuk halaman yang keluar */
+body.exit {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+  /* Navbar Styling */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    padding: 0 50px;
+    margin-bottom: 90px;
+    background-color: #fff;
+    border-bottom: 2px solid #000000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Logo */
+  header .logo img {
+    width: 400px; /* Ukuran logo */
+    height: auto; /* Memastikan proporsi logo */
+    object-fit: contain;
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1100;
+    position: absolute;
+    right: 50px;
+  }
+  
+  .hamburger div {
+    width: 30px;
+    height: 2px;
+    background-color: black;
+    margin: 5px;
+    transition: transform 0.4s, opacity 0.4s;
+  }
+
+  /* Efek silang saat aktif */
+.hamburger.active div:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
+}
+  
+nav {
+  display: flex;
+  gap: 70px;
+  font-family: "Inria Serif", serif;
+  
+}
+  
+  header nav a {
+    text-decoration: none; /* Hilangkan garis bawah */
+    color: #333; /* Warna teks */
+    font-size: 22px; /* Ukuran font menu */
+    letter-spacing: 3px;
+    position: relative; /* Untuk efek hover */
+    padding: 10px 0;
+  }
+  
+  header nav a:hover {
+    color: #000; /* Warna saat hover */
+    transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
+  }
+  
+  header nav a:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000; /* Warna garis hover */
+    transition: width 0.3s ease;
+  }
+  
+  header nav a:hover:after {
+    width: 100%; /* Animasi garis hover */
+  }
+  
+  /* CSS untuk backdrop (latar belakang gelap) */
+  .darker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparansi */
+    display: none; /* Sembunyikan secara default */
+    z-index: 999; /* Pastikan berada di atas konten lainnya */
+  }
+  
+  /* Popup pencarian */
+  .search-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 100%; /* Memenuhi lebar layar */
+    width: 100%;
+    height: 180px; /* Tinggi area popup */
+    background-color: white; /* Latar belakang putih */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Bayangan lembut */
+    align-content: center;
+    transform: translateY(-180px); /* Sembunyikan di atas layar */
+    opacity: 0; /* Awalnya tidak terlihat */
+    transition: transform 1s ease, opacity 1s ease; /* Animasi halus */
+    z-index: 1000; /* Tetap di atas elemen lainnya */
+    border-bottom-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+  }
+  
+  /* Saat pop-up aktif (tampil) */
+  .search-popup.active {
+    transform: translateY(0); /* Turun ke posisi normal */
+    opacity: 1; /* Tampilkan */
+  }
+  
+  /* Menonaktifkan scroll pada body */
+  body.no-scroll {
+    overflow: hidden;
+  }
+  
+  /* Pastikan klik di backdrop tidak menutup pop-up */
+  .darker.active {
+    display: block;
+    pointer-events: none; /* Nonaktifkan interaksi dengan backdrop */
+  }
+  
+  .darker.no-click {
+    pointer-events: none; /* Overlay tidak bisa diklik */
+  }
+  
+  /* Tombol tutup pop-up */
+  .close-icon {
+    pointer-events: all; /* Pastikan tombol close bisa diklik */
+  }
+  
+  /* Kotak pencarian */
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antar elemen */
+    width: 800px; /* Lebar kotak pencarian */
+    max-width: 800px; /* Batas maksimal */
+    margin-left: 370px;
+    position: relative;
+  }
+  
+  /* Input pencarian */
+  .search-container input[type="text"] {
+    flex: 1; /* Mengisi ruang yang tersedia */
+    padding: 10px 0 10px 15px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #777877;
+  }
+  
+  .search .search-popup .search-container input {
+    font-family: 'Fustat';
+    font-size: 20px;
+    margin: 0;
+    padding: 0 0 5px 0;
+  }
+  
+  /* Ikon pencarian di kanan */
+  .search-container .input-icon {
+    position: absolute;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+  
+  /* Tombol tutup (close) */
+  .search-container .close-icon {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  
+  button {
+    background-color: white;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  /* Ikon User dan Search */
+  header .search img {
+    width: 40px;
+    height: auto;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  header .user img {
+    width: 45px;
+    height: auto;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  header .user img:hover {
+    text-decoration: none;
+  }
+  
+  header .search img:hover,
+  header .user img:hover {
+    color: #000; /* Warna saat hover */
+    transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
+    text-decoration: none;
+  }
+  
+  /* Wrapper untuk User dan Search */
+  header .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Jarak antar ikon */
+  }
+  
+  .category-text h1 {
+    font-size: 80px;
+    font-family: 'Aboreto';
+    font-weight: 300;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .category-furniture {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.breadcrumb {
+  font-family: 'Abel';
+  text-align: center;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 50px;
+    margin-top: 100px;
+    
+}
+
+.category-furniture h1 {
+  font-family: 'Abel';
+  font-weight: 300;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 120px;
+}
+
+.category-furniture h2 {
+  font-family: 'Abel';
+    font-size: 30px;
+    font-weight: 300;
+    text-align: left;
+    margin: 0;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 20px;
+    margin-bottom: 70px;
+}
+
+.item {
+  text-align: center;
+}
+
+.item img {
+    width: 300px;
+    object-fit: cover;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.item-text {
+  font-family: 'Abel';
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  margin: 0;
+  align-items: center;
+  
+}
+
+.item-text p {
+  margin: 0 30px 0 30px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    background-image: url(../img/bgkertas.jpg);
+    padding: 20px 40px 0 40px;
+    box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.3);
+    margin-top: 10%;
+    height: 340px;
+  }
+  
+  .footer-section h4 {
+    font-family: 'Istok Web', serif;
+    font-weight: 300;
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+  
+  .footer-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-section ul li a {
+    font-family: 'Fustat', serif;
+    font-size: 20px;
+    line-height: 1.8;
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #007BFF;
+  }
+  
+  .footer-section p {
+    margin: 5px 0;
+    font-size: 20px;
+    line-height: 2;
+    font-family: 'Fustat', serif;
+  }
+  
+  .footer-section a {
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    line-height: 1.8;
+    font-family: 'Fustat', serif;
+  }
+  
+  .footer-section a:hover {
+    color: #007BFF;
+  }
+  
+  .footer-section form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .footer-section input {
+    width: 286px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .subscribe {
+    background-color: white;
+    font-family: 'Fustat', serif;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    padding: 5px 0 5px 15px;
+    font-size: 18px;
+    border-radius: 4px;
+    display: inline-flex;
+    gap: 10px;
+    width: 286px;
+    color: black;
+  }
+  
+  .subscribe img {
+    width: 25px;;
+    height: auto;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    background-image: url(../img/bgkertas.jpg);
+    padding: 0 110px 20px 100px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #000000;
+  }
+  
+  .footer-bottom .socials-icon {
+    flex: 1; /* Memberikan ruang untuk ikon */
+  }
+  
+  .footer-bottom .socials-icon a img {
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+    vertical-align: middle;
+  }
+  
+  .footer-bottom .footer-info {
+    font-family: 'Instrument Sans', serif;
+    font-size: 16px;
+    text-align: center; /* Paragraf di tengah */
+    flex: 1;
+  }
+  
+  .footer-bottom .privacy-policy {
+    font-family: 'Instrument Sans', serif;
+    font-size: 16px;
+    text-align: right; /* "Privacy & Cookies Policy" di kanan */
+    flex: 1;
+  }
+  
+  .footer-bottom a {
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  .footer-bottom a:hover {
+    text-decoration: underline;
+  }
+
+  /* Base Popup Styles */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9); /* Start small */
+  opacity: 0; /* Initially invisible */
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  background-color: white;
+  padding: 40px;
+  border-radius: 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-width: 100%;
+  width: 1300px;
+  height: 800px;
+  pointer-events: none;
+}
+
+.popup.show {
+  display: block;
+  transform: translate(-50%, -50%) scale(0.9); /* Full size when shown */
+  opacity: 1; /* Fully visible */
+  pointer-events: auto;
+}
+
+.popup.hide {
+  transform: translate(-50%, -50%) scale(0.9); /* Slightly small */
+  opacity: 0;
+}
+
+/* Overlay (Dark Background) */
+.darkers {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000; /* Overlay is below popups */
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.darkers.active {
+  display: block;
+  opacity: 1;
+}
+
+.darkers.no-click {
+  pointer-events: none; /* Overlay tidak bisa diklik */
+}
+
+.close-popup {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  background-color: transparent;
+  color: #d0aa84;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  z-index: 1010; /* Ensures it stays on top */
+}
+
+.close-popup:hover {
+  transform: scale(1.1);
+}
+
+/* Make sure the icon is centered properly */
+.close-popup i {
+  font-size: 40px;
+  color: #d0aa84;
+}
+
+.close-popup:hover i {
+  color: #d0aa84;
+}
+
+/* Popup Container Styles */
+.popup-container {
+  display: grid;
+  justify-items: center;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.popup-container h1 {
+  font-family: 'Ephesis', serif;
+  font-weight: 300;
+  color: #d0aa84;
+  letter-spacing: 15px;
+  font-size: 80px;
+  margin-bottom: 5px;
+}
+
+.popup-container h2 {
+  font-family: 'Aboreto';
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #000000;
+  margin: 0 0 20px 0;
+}
+
+.popup-container form {
+  margin-left: 0;
+  justify-items: center;
+}
+
+.popup .popup-container .signin-form {
+  margin-left: 0;
+  margin-top: 40px;
+  display: grid;
+  gap: 50px;
+  grid-template-columns: 0fr;
+}
+
+.popup-container .password-input {
+  width: 981px;
+  margin: 10px 10px;
+}
+
+.popup-container input {
+  max-width: 100%;
+  font-family: 'Fustat';
+  width: 480px;
+  padding: 12px;
+  margin: 10px 10px;
+  border: none;
+  border-bottom: 1px solid #777877;
+  font-size: 18px;
+  outline: none;
+}
+
+.popup-container .signin-form input {
+  max-width: 100%;
+  font-family: 'Fustat';
+  width: 1000px;
+  padding: 12px;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid #777877;
+  font-size: 18px;
+  outline: none;
+}
+
+.popup-container button {
+  display: block;
+  width: auto; /* Lebar otomatis mengikuti ukuran konten */
+  margin: 40px 0 20px 0; /* Memusatkan tombol */
+  padding: 7px 40px;
+  background-color: transparent;
+  color: #d0aa84;
+  border: 1px solid #d0aa84;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-family: 'Fustat';
+  cursor: pointer;
+}
+
+.popup-container .text-signin {
+  background-color: transparent;
+  color: #d0aa84;
+  border: 1px solid #d0aa84;
+  margin-top: 40px;
+  padding: 7px 40px;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-family: 'Fustat';
+  cursor: pointer;
+}
+
+.text-signin a {
+  text-decoration: none;
+  color: inherit; /* Memastikan warna teks sesuai dengan tombol */
+}
+
+.text-signin a:hover {
+  text-decoration: none; /* Menghindari efek underline saat hover */
+}
+
+.popup-container button:hover {
+  background-color: #d0aa84;
+  color: white;
+}
+
+.popup-container button .close-popup {
+  font-size: 18px;
+  font-family: 'Fustat';
+}
+
+.popup-container .popup-link {
+  font-size: 20px;
+  font-family: 'Fustat';
+  letter-spacing: 2px;
+  color: #333;
+  margin: 0;
+}
+
+.popup-container .popup-link span {
+  font-size: 20px;
+  font-family: 'Fustat';
+  color: #d0aa84;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.popup-container .popup-link span:hover {
+  text-decoration: underline;
+}
