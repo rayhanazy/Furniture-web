@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* Reset */
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 *{
@@ -696,3 +700,258 @@ nav {
 .popup-container .popup-link span:hover {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 1300px) {
+    nav {
+      flex-direction: column;
+      position: fixed;
+      top: 120px;
+      width: 15%;
+      gap: 40px;
+      background-color: white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+      text-align: left;
+      padding: 20px 0 20px 20px;
+      right: -250px;
+      transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+      opacity: 0;
+      visibility: hidden;
+      border-radius: 20px;
+    }
+  
+    nav.active {
+      display: flex;
+      right: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    nav a:hover {
+      transform: translateY(0) scale(1.0);
+    }
+  
+    nav a:after {
+      display: none;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+    .type-text h1 {
+      font-size: 60px;
+      letter-spacing: 3px;
+      padding: 15px;
+  }
+  
+  .category-furniture h1 {
+      width: 95%;
+      padding: 15px;
+  }
+  
+  .breadcrumb {
+      font-size: 20px;
+      margin-bottom: 40px;
+  }
+  
+  .category-furniture h2 {
+      font-size: 25px;
+  }
+  
+  .gallery {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+  }
+  
+  .item img {
+      width: 250px;
+      height: 180px;
+  }
+  
+  .item-text {
+      font-size: 22px;
+  }
+  .garis {
+    width: 1300px;
+  }
+  }
+  @media screen and (max-width: 992px) {
+    nav {
+      flex-direction: column;
+      position: fixed;
+      top: 128px;
+      width: 25%;
+      gap: 40px;
+      background-color: white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+      text-align: left;
+      padding: 20px 0 20px 20px;
+      right: -250px;
+      transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+      opacity: 0;
+      visibility: hidden;
+      border-radius: 20px;
+    }
+  
+    nav.active {
+      display: flex;
+      right: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    nav a:hover {
+      transform: translateY(0) scale(1.0);
+    }
+  
+    nav a:after {
+      display: none;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  
+    .footer {
+      flex-direction: column;
+      height: auto;
+      padding-bottom: 20px;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      padding: 10px;
+    }
+    header {
+      height: auto;
+      padding: 20px;
+      margin-bottom: 50px;
+  }
+  
+    .footer-section h4 {
+      margin-top: 33px;
+      font-size: 23px;
+    }
+    .category-furniture h1 {
+      font-size: 50px;
+  }
+  
+  .gallery {
+      grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .item img {
+      width: 200px;
+      height: 150px;
+  }
+  }
+
+  @media screen and (max-width: 768px) {
+    header {
+      margin-bottom: 50px;
+    }
+  
+    header .logo img {
+      width: 300px;
+    }
+    nav {
+      flex-direction: column;
+      position: fixed;
+      top: 108px;
+      width: 30%;
+      gap: 40px;
+      background-color: white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+      text-align: left;
+      padding: 20px 0 20px 20px;
+      right: -250px;
+      transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+      opacity: 0;
+      visibility: hidden;
+      border-radius: 20px;
+    }
+  
+    nav.active {
+      display: flex;
+      right: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    nav a:hover {
+      transform: translateY(0) scale(1.0);
+    }
+  
+    nav a:after {
+      display: none;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+    .type-text h1 {
+      font-size: 40px;
+  }
+  
+  .breadcrumb {
+      font-size: 18px;
+  }
+  
+  .category-furniture h1 {
+      font-size: 30px;
+  }
+  
+  .gallery {
+      grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .item img {
+      width: 100%;
+      height: auto;
+  }
+  }
+
+  @media screen and (max-width: 576px) {
+    header .logo img {
+      width: 200px;
+    }
+    nav {
+      flex-direction: column;
+      position: fixed;
+      top: 87px;
+      width: 40%;
+      gap: 40px;
+      background-color: white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+      text-align: left;
+      padding: 20px 0 20px 20px;
+      right: -250px;
+      transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+      opacity: 0;
+      visibility: hidden;
+      border-radius: 20px;
+    }
+  
+    nav.active {
+      display: flex;
+      right: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    nav a:hover {
+      transform: translateY(0) scale(1.0);
+    }
+  
+    nav a:after {
+      display: none;
+    }
+  
+    header nav a {
+      font-size: 12px;
+      padding: 0px;
+  
+    }
+    .hamburger {
+      display: flex;
+    }
+  }
