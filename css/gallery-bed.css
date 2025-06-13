@@ -211,11 +211,6 @@ body.exit {
     pointer-events: none; /* Overlay tidak bisa diklik */
   }
   
-  /* Tombol tutup pop-up */
-  .close-icon {
-    pointer-events: all; /* Pastikan tombol close bisa diklik */
-  }
-  
   /* Kotak pencarian */
   .search-container {
     display: flex;

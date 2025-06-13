@@ -24,6 +24,7 @@ body {
   }
 }
 
+
 /* Animasi untuk halaman yang keluar */
 body.exit {
   opacity: 0;

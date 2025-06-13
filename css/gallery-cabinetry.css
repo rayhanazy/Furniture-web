@@ -178,7 +178,6 @@ body.exit {
     transition: transform 1s ease, opacity 1s ease; /* Animasi halus */
     z-index: 1000; /* Tetap di atas elemen lainnya */
     border-bottom-left-radius: 70px;
-    border-bottom-right-radius: 70px;
   }
   
   /* Saat pop-up aktif (tampil) */

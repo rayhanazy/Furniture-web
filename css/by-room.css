@@ -72,6 +72,7 @@ body.exit {
     margin: 5px;
     transition: transform 0.4s, opacity 0.4s;
   }
+  
 
   /* Efek silang saat aktif */
 .hamburger.active div:nth-child(1) {
