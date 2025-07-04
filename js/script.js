@@ -129,9 +129,6 @@ customers[currentIndex].classList.add('active');
 
 
 
-
-
-
 // Toggle the visibility of the popup and overlay with animation and dark effect
 function togglePopup() {
   const popup = document.getElementById('searchPopup');
@@ -151,7 +148,7 @@ function togglePopup() {
   overlay.classList.toggle("active");
 
   // Efek saat overlay di-klik untuk menutup popup
-  overlay.onclick = function() {
+  overlay.onclick = function () {
     popup.classList.remove("active");
     overlay.classList.remove("active");
   };
@@ -171,9 +168,9 @@ function toggleMenu() {
 
   // Jika menu aktif, nonaktifkan scroll
   if (menu.classList.contains("active")) {
-      body.style.overflow = "hidden"; // Nonaktifkan scroll
+    body.style.overflow = "hidden"; // Nonaktifkan scroll
   } else {
-      body.style.overflow = "auto"; // Aktifkan kembali scroll
+    body.style.overflow = "auto"; // Aktifkan kembali scroll
   }
 }
 
@@ -185,14 +182,14 @@ function toggleMenu() {
 
 
 
-  
 
 
 
 
 
 
-  
+
+
 
 
 

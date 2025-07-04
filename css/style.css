@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Ephesis&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Ephesis&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 /* Reset */
 html {
@@ -9,73 +7,73 @@ html {
   padding: 0;
 }
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-  
-  body {
-    font-family: 'Inria Serif', serif;
-    margin: 0;
-    padding: 0;
+
+body {
+  font-family: "Inria Serif", serif;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
     opacity: 0;
-    animation: fadeIn 1s forwards;
   }
+  100% {
+    opacity: 1;
+  }
+}
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  /* Animasi untuk halaman yang keluar */
-  body.exit {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+/* Animasi untuk halaman yang keluar */
+body.exit {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
 
-  /* Navbar Styling */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 120px;
-    padding: 0 50px;
-    margin-bottom: 90px;
-    background-color: #fff;
-    border-bottom: 2px solid #000000;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  /* Logo */
-  header .logo img {
-    width: 400px; /* Ukuran logo */
-    height: auto; /* Memastikan proporsi logo */
-    object-fit: contain;
-  }
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 1100;
-    position: absolute;
-    right: 50px;
-  }
-  
-  .hamburger div {
-    width: 30px;
-    height: 2px;
-    background-color: black;
-    margin: 5px;
-    transition: transform 0.4s, opacity 0.4s;
-  }
+/* Navbar Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  padding: 0 50px;
+  margin-bottom: 90px;
+  background-color: #fff;
+  border-bottom: 2px solid #000000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-  /* Efek silang saat aktif */
+/* Logo */
+header .logo img {
+  width: 400px; /* Ukuran logo */
+  height: auto; /* Memastikan proporsi logo */
+  object-fit: contain;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1100;
+  position: absolute;
+  right: 50px;
+}
+
+.hamburger div {
+  width: 30px;
+  height: 2px;
+  background-color: black;
+  margin: 5px;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+/* Efek silang saat aktif */
 .hamburger.active div:nth-child(1) {
   transform: translateY(12px) rotate(45deg);
 }
@@ -87,235 +85,231 @@ html {
 .hamburger.active div:nth-child(3) {
   transform: translateY(-12px) rotate(-45deg);
 }
-  
+
 nav {
   display: flex;
   gap: 70px;
   font-family: "Inria Serif", serif;
-  
 }
-  
-  header nav a {
-    text-decoration: none; /* Hilangkan garis bawah */
-    color: #333; /* Warna teks */
-    font-size: 22px; /* Ukuran font menu */
-    letter-spacing: 3px;
-    position: relative; /* Untuk efek hover */
-    padding: 10px 0;
-  }
-  
-  header nav a:hover {
-    color: #000; /* Warna saat hover */
-    transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
-  }
-  
-  header nav a:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #000; /* Warna garis hover */
-    transition: width 0.3s ease;
-  }
-  
-  header nav a:hover:after {
-    width: 100%; /* Animasi garis hover */
-  }
-  
-  /* CSS untuk backdrop (latar belakang gelap) */
-  .darker {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Transparansi */
-    display: none; /* Sembunyikan secara default */
-    z-index: 999; /* Pastikan berada di atas konten lainnya */
-  }
-  
-  /* Popup pencarian */
-  .search-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    max-width: 100%; /* Memenuhi lebar layar */
-    width: 100%;
-    height: 180px; /* Tinggi area popup */
-    background-color: white; /* Latar belakang putih */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Bayangan lembut */
-    align-content: center;
-    transform: translateY(-180px); /* Sembunyikan di atas layar */
-    opacity: 0; /* Awalnya tidak terlihat */
-    transition: transform 1s ease, opacity 1s ease; /* Animasi halus */
-    z-index: 1000; /* Tetap di atas elemen lainnya */
-    border-bottom-left-radius: 70px;
-    border-bottom-right-radius: 70px;
-  }
-  
-  /* Saat pop-up aktif (tampil) */
-  .search-popup.active {
-    transform: translateY(0); /* Turun ke posisi normal */
-    opacity: 1; /* Tampilkan */
-  }
-  
-  /* Menonaktifkan scroll pada body */
-  body.no-scroll {
-    overflow: hidden;
-  }
-  
-  /* Pastikan klik di backdrop tidak menutup pop-up */
-  .darker.active {
-    display: block;
-    pointer-events: none; /* Nonaktifkan interaksi dengan backdrop */
-  }
-  
-  .darker.no-click {
-    pointer-events: none; /* Overlay tidak bisa diklik */
-  }
-  
-  /* Tombol tutup pop-up */
-  .close-icon {
-    pointer-events: all; /* Pastikan tombol close bisa diklik */
-  }
-  
-  /* Kotak pencarian */
-  .search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Jarak antar elemen */
-    width: 800px; /* Lebar kotak pencarian */
-    max-width: 800px; /* Batas maksimal */
-    margin-left: 370px;
-    position: relative;
-  }
-  
-  /* Input pencarian */
-  .search-container input[type="text"] {
-    flex: 1; /* Mengisi ruang yang tersedia */
-    padding: 10px 0 10px 15px;
-    font-size: 16px;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid #777877;
-  }
-  
-  .search .search-popup .search-container input {
-    font-family: 'Fustat';
-    font-size: 20px;
-    margin: 0;
-    padding: 0 0 5px 0;
-  }
-  
-  /* Ikon pencarian di kanan */
-  .search-container .input-icon {
-    position: absolute;
-    right: 0px;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 15px;
-    cursor: pointer;
-  }
-  
-  /* Tombol tutup (close) */
-  .search-container .close-icon {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    font-size: 20px;
-    background: none;
-    border: none;
-    color: black;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-  }
-  
-  button {
-    background-color: white;
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  /* Ikon User dan Search */
-  header .search img {
-    width: 40px;
-    height: auto;
-    cursor: pointer;
-  }
-  header .user img {
-    width: 45px;
-    height: auto;
-    margin: 0;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  header .user img:hover {
-    text-decoration: none;
-  }
-  
-  header .search img:hover,
-  header .user img:hover {
-    color: #000; /* Warna saat hover */
-    transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
-    text-decoration: none;
-  }
-  
-  /* Wrapper untuk User dan Search */
-  header .icons {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Jarak antar ikon */
-  }
 
+header nav a {
+  text-decoration: none; /* Hilangkan garis bawah */
+  color: #333; /* Warna teks */
+  font-size: 22px; /* Ukuran font menu */
+  letter-spacing: 3px;
+  position: relative; /* Untuk efek hover */
+  padding: 10px 0;
+}
 
-  
-  /* Slider */
-  .slider {
-    position: relative;
-    overflow: hidden;
-    height: 80vh;
-  }
-  .slider-content {
-    display: flex;
-    align-items: center;
-    height: 100%;
-  }
-  .slides {
-    display: flex;
-    transition: transform 1.5s ease-in-out;
-  }
-  .slide {
-    min-width: 100%;
-    position: relative;
-    text-align: center;
-  }
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter:brightness(60%);
-    
-  }
-  .text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-  }
-  .text h1 {
-    font-family: 'Inria Serif', serif;
-    font-size: 80px;
-    font-weight: 200;
-    margin: 5px;
-  }
-  
- /* Tombol Arrow */
+header nav a:hover {
+  color: #000; /* Warna saat hover */
+  transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
+}
+
+header nav a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Warna garis hover */
+  transition: width 0.3s ease;
+}
+
+header nav a:hover:after {
+  width: 100%; /* Animasi garis hover */
+}
+
+/* CSS untuk backdrop (latar belakang gelap) */
+.darker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Transparansi */
+  display: none; /* Sembunyikan secara default */
+  z-index: 999; /* Pastikan berada di atas konten lainnya */
+}
+
+/* Popup pencarian */
+.search-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: 100%; /* Memenuhi lebar layar */
+  width: 100%;
+  height: 180px; /* Tinggi area popup */
+  background-color: white; /* Latar belakang putih */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Bayangan lembut */
+  align-content: center;
+  transform: translateY(-180px); /* Sembunyikan di atas layar */
+  opacity: 0; /* Awalnya tidak terlihat */
+  transition: transform 1s ease, opacity 1s ease; /* Animasi halus */
+  z-index: 1000; /* Tetap di atas elemen lainnya */
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+}
+
+/* Saat pop-up aktif (tampil) */
+.search-popup.active {
+  transform: translateY(0); /* Turun ke posisi normal */
+  opacity: 1; /* Tampilkan */
+}
+
+/* Menonaktifkan scroll pada body */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Pastikan klik di backdrop tidak menutup pop-up */
+.darker.active {
+  display: block;
+  pointer-events: none; /* Nonaktifkan interaksi dengan backdrop */
+}
+
+.darker.no-click {
+  pointer-events: none; /* Overlay tidak bisa diklik */
+}
+
+/* Tombol tutup pop-up */
+.close-icon {
+  pointer-events: all; /* Pastikan tombol close bisa diklik */
+}
+
+/* Kotak pencarian */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antar elemen */
+  width: 800px; /* Lebar kotak pencarian */
+  max-width: 800px; /* Batas maksimal */
+  margin-left: 370px;
+  position: relative;
+}
+
+/* Input pencarian */
+.search-container input[type="text"] {
+  flex: 1; /* Mengisi ruang yang tersedia */
+  padding: 10px 0 10px 15px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #777877;
+}
+
+.search .search-popup .search-container input {
+  font-family: "Fustat";
+  font-size: 20px;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+
+/* Ikon pencarian di kanan */
+.search-container .input-icon {
+  position: absolute;
+  right: 0px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* Tombol tutup (close) */
+.search-container .close-icon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+button {
+  background-color: white;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ikon User dan Search */
+header .search img {
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+}
+header .user img {
+  width: 45px;
+  height: auto;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+header .user img:hover {
+  text-decoration: none;
+}
+
+header .search img:hover,
+header .user img:hover {
+  color: #000; /* Warna saat hover */
+  transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
+  text-decoration: none;
+}
+
+/* Wrapper untuk User dan Search */
+header .icons {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Jarak antar ikon */
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  overflow: hidden;
+  height: 80vh;
+}
+.slider-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.slides {
+  display: flex;
+  transition: transform 1.5s ease-in-out;
+}
+.slide {
+  min-width: 100%;
+  position: relative;
+  text-align: center;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(60%);
+}
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.text h1 {
+  font-family: "Inria Serif", serif;
+  font-size: 80px;
+  font-weight: 200;
+  margin: 5px;
+}
+
+/* Tombol Arrow */
 .arrow {
   position: absolute;
   top: 50%;
@@ -358,7 +352,7 @@ nav {
 }
 
 .since h1 {
-  font-family: 'Inria Serif', serif;
+  font-family: "Inria Serif", serif;
   font-size: 36px; /* Ukuran font besar untuk judul */
   font-weight: 500;
   margin-bottom: 10px; /* Jarak bawah dengan teks berikutnya */
@@ -367,7 +361,7 @@ nav {
 }
 
 .since .subtitle {
-  font-family: 'Instrument Sans', serif;
+  font-family: "Instrument Sans", serif;
   font-size: 16px; /* Ukuran teks lebih kecil */
   font-weight: 400; /* Tidak terlalu tebal */
   color: #282727; /* Warna abu-abu untuk subtitle */
@@ -385,7 +379,6 @@ nav {
   height: 520px;
   margin-top: 60px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  
 }
 
 .luxury-content {
@@ -399,11 +392,11 @@ nav {
 .luxury-text {
   max-width: 600px;
   text-align: left;
-  font-family: 'Inria Serif', serif;
+  font-family: "Inria Serif", serif;
 }
 
 .luxury-text h2 {
-  font-family: 'Beau Rivage', cursive;
+  font-family: "Beau Rivage", cursive;
   font-size: 70px;
   font-weight: 200;
   color: #d0aa84;
@@ -412,7 +405,7 @@ nav {
 }
 
 .luxury-text h3 {
-  font-family: 'Beau Rivage', cursive;
+  font-family: "Beau Rivage", cursive;
   font-size: 70px;
   font-weight: 200;
   color: #d0aa84;
@@ -420,23 +413,24 @@ nav {
 }
 
 .luxury-text .luxury-subtitle {
-  font-family: 'Aboreto', system-ui;
+  font-family: "Aboreto", system-ui;
   font-size: 20px;
   font-weight: 500;
   text-transform: uppercase;
   color: #ffffff;
   margin: 0;
-}     
+}
 
 .luxury-text p {
-  font-family: 'Abel', sans-serif;
+  font-family: "Abel", sans-serif;
   font-size: 16px;
   color: #ffffff;
   line-height: 1.6;
   margin: 0;
 }
 
-.luxury-images1, .luxury-images2 {
+.luxury-images1,
+.luxury-images2 {
   display: flex;
   flex-direction: row;
   gap: 20px;
@@ -468,7 +462,7 @@ nav {
 
 .find-products p {
   font-size: 38px;
-  font-family: 'Inria serif', serif;
+  font-family: "Inria serif", serif;
   color: #000000;
   text-align: center;
   margin-bottom: 15px;
@@ -483,7 +477,7 @@ nav {
 }
 
 .shop-by-room h2 {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   letter-spacing: 3px;
   margin: 0;
   padding-bottom: 70px;
@@ -512,7 +506,6 @@ nav {
   object-fit: cover;
 }
 
-
 .room .overlays {
   position: absolute;
   top: 0;
@@ -534,7 +527,7 @@ nav {
 }
 
 .room .overlays h3 {
-  font-family: 'Istok web', sans-serif;
+  font-family: "Istok web", sans-serif;
   font-weight: 300;
   color: white;
   margin-bottom: 10px;
@@ -543,7 +536,7 @@ nav {
 }
 
 .shop-now {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   font-weight: 300;
   display: inline-flex;
   align-items: center;
@@ -575,13 +568,12 @@ nav {
   padding: 50px 20px;
   background-image: url(../img/bgkertas.jpg);
   text-align: center;
-  box-shadow: 
-    0px 4px 6px rgba(0, 0, 0, 0.3), /* Drop shadow */
-    inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3),
+    /* Drop shadow */ inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
 }
 
 .category-section h2 {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   letter-spacing: 5px;
   font-weight: 400;
   font-size: 28px;
@@ -621,16 +613,15 @@ nav {
 }
 
 .info h3 {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   font-weight: 500;
   margin: 0;
   font-size: 20px;
   color: #000000; /* Ubah warna agar terlihat di atas gambar */
-
 }
 
 .info a {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   font-size: 20px;
   text-decoration: none;
   color: #000000;
@@ -657,7 +648,7 @@ nav {
 }
 
 .type-wood h2 {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   letter-spacing: 3px;
   margin: 0;
   padding-bottom: 70px;
@@ -687,7 +678,6 @@ nav {
   transition: transform 0.3s ease;
 }
 
-
 .title {
   position: absolute;
   top: 0;
@@ -709,7 +699,7 @@ nav {
 }
 
 .title h3 {
-  font-family: 'Istok web', sans-serif;
+  font-family: "Istok web", sans-serif;
   font-weight: 300;
   color: white;
   margin-bottom: 10px;
@@ -718,7 +708,7 @@ nav {
 }
 
 .shop-now {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   font-weight: 300;
   display: inline-flex;
   align-items: center;
@@ -750,13 +740,12 @@ nav {
   padding: 20px 20px;
   background-image: url(../img/bgkertas.jpg);
   text-align: center;
-  box-shadow: 
-    0px 4px 6px rgba(0, 0, 0, 0.3), /* Drop shadow */
-    inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3),
+    /* Drop shadow */ inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
 }
 
 .services-section h2 {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   letter-spacing: 5px;
   font-size: 28px;
   font-weight: 400;
@@ -764,21 +753,20 @@ nav {
 }
 
 .art-luxury {
-  padding: 80px 140px 80px 120px  ;
+  padding: 80px 140px 80px 120px;
 }
 
 .art-luxury h2 {
-  font-family: 'Instrument Sans', serif;
+  font-family: "Instrument Sans", serif;
   font-size: 30px;
   font-weight: 400;
   margin: 20px 0;
 }
 
 .art-luxury p {
-  font-family: 'Abel', sans-serif;
+  font-family: "Abel", sans-serif;
   line-height: 1.6;
   font-size: 20px;
-
 }
 
 .customers-section {
@@ -787,9 +775,8 @@ nav {
   background-image: url(../img/bgkertas.jpg);
   position: relative;
   width: 100%;
-  box-shadow: 
-    0px 4px 6px rgba(0, 0, 0, 0.3), /* Drop shadow */
-    inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3),
+    /* Drop shadow */ inset 0px 4px 6px rgba(0, 0, 0, 0.3); /* Inner shadow */
 }
 
 .customer {
@@ -858,7 +845,7 @@ nav {
 .customer h1 {
   display: flex;
   justify-content: space-between;
-  font-family: 'Beau Rivage', cursive;
+  font-family: "Beau Rivage", cursive;
   color: #d0aa84;
   margin-top: 20px;
   margin-bottom: 0;
@@ -873,14 +860,14 @@ nav {
 }
 
 .customer h2 {
-  font-family: 'Aboreto', system-ui;
+  font-family: "Aboreto", system-ui;
   font-weight: 500;
   font-size: 40px;
   margin: 0;
 }
 
 .customer p {
-  font-family: 'Agdasima', sans-serif;
+  font-family: "Agdasima", sans-serif;
   font-size: 30px;
   letter-spacing: 1px;
   margin-right: 600px;
@@ -889,7 +876,7 @@ nav {
 }
 
 .customer h3 {
-  font-family: 'Agdasima', sans-serif;
+  font-family: "Agdasima", sans-serif;
   letter-spacing: 1px;
   font-size: 25px;
   font-weight: 400;
@@ -922,7 +909,7 @@ nav {
   background-color: #202020;
   width: auto;
   height: 500px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3)
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .dedicated {
@@ -939,7 +926,7 @@ nav {
 }
 
 .dedicated h2 {
-  font-family: 'Beau Rivage', cursive;
+  font-family: "Beau Rivage", cursive;
   color: #d0aa84;
   font-size: 50px;
   font-weight: 200;
@@ -948,7 +935,7 @@ nav {
 }
 
 .dedicated .main-text {
-  font-family: 'Aboreto', system-ui;
+  font-family: "Aboreto", system-ui;
   font-size: 35px;
   color: white;
   margin: 65px 50px 0 0;
@@ -956,7 +943,7 @@ nav {
 
 .contact {
   font-size: 20px;
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   padding: 10px 30px 5px 30px;
   font-weight: 300;
   border: 2px solid #ffffff;
@@ -980,9 +967,8 @@ nav {
   transform: scale(1.1); /* Efek zoom yang sama pada link */
 }
 
-
 .showroom h2 {
-  font-family: 'Fustat', sans-serif;
+  font-family: "Fustat", sans-serif;
   font-size: 28px;
   font-weight: 400;
   justify-content: center;
@@ -994,15 +980,15 @@ nav {
 .showroom p {
   display: flex;
   justify-content: center;
-  font-family: 'Aboreto', system-ui;
+  font-family: "Aboreto", system-ui;
   font-size: 25px;
   padding-top: 50px;
 }
 
 .info-container {
   display: flex;
-  font-family: 'Istok Web', sans-serif;
-  max-width: 1234px;  
+  font-family: "Istok Web", sans-serif;
+  max-width: 1234px;
   justify-content: space-between;
   margin: auto;
   padding-top: 30px;
@@ -1025,7 +1011,7 @@ nav {
 
 .info-item span {
   font-size: 25px;
-  font-family: 'Istok Web', serif;
+  font-family: "Istok Web", serif;
   color: #000000;
   line-height: 1.5;
 }
@@ -1047,7 +1033,7 @@ nav {
 }
 
 .footer-section h4 {
-  font-family: 'Istok Web', serif;
+  font-family: "Istok Web", serif;
   font-weight: 300;
   margin-bottom: 10px;
   font-size: 25px;
@@ -1063,7 +1049,7 @@ nav {
 }
 
 .footer-section ul li a {
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
   font-size: 20px;
   line-height: 1.8;
   text-decoration: none;
@@ -1072,14 +1058,14 @@ nav {
 }
 
 .footer-section ul li a:hover {
-  color: #007BFF;
+  color: #007bff;
 }
 
 .footer-section p {
   margin: 5px 0;
   font-size: 20px;
   line-height: 2;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
 }
 
 .footer-section a {
@@ -1087,11 +1073,11 @@ nav {
   color: #000;
   font-size: 20px;
   line-height: 1.8;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
 }
 
 .footer-section a:hover {
-  color: #007BFF;
+  color: #007bff;
 }
 
 .footer-section form {
@@ -1110,9 +1096,9 @@ nav {
   border-radius: 4px;
 }
 
- .footer-section button .subscribe {
+.footer-section button .subscribe {
   background-color: white;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
   border: 1px solid #ccc;
   margin-top: 20px;
   padding: 5px 0 5px 15px;
@@ -1139,8 +1125,8 @@ nav {
   align-items: center;
 }
 
- .footer-section .subscribe img {
-  width: 25px;;
+.footer-section .subscribe img {
+  width: 25px;
   height: auto;
 }
 
@@ -1166,14 +1152,14 @@ nav {
 }
 
 .footer-bottom .footer-info {
-  font-family: 'Instrument Sans', serif;
+  font-family: "Instrument Sans", serif;
   font-size: 16px;
   text-align: center; /* Paragraf di tengah */
   flex: 1;
 }
 
 .footer-bottom .privacy-policy {
-  font-family: 'Instrument Sans', serif;
+  font-family: "Instrument Sans", serif;
   font-size: 16px;
   text-align: right; /* "Privacy & Cookies Policy" di kanan */
   flex: 1;
@@ -1187,7 +1173,6 @@ nav {
 .footer-bottom a:hover {
   text-decoration: underline;
 }
-
 
 /* Base Popup Styles */
 .popup {
@@ -1280,7 +1265,7 @@ nav {
 }
 
 .popup-container h1 {
-  font-family: 'Ephesis', serif;
+  font-family: "Ephesis", serif;
   font-weight: 300;
   color: #d0aa84;
   letter-spacing: 15px;
@@ -1289,7 +1274,7 @@ nav {
 }
 
 .popup-container h2 {
-  font-family: 'Aboreto';
+  font-family: "Aboreto";
   font-size: 40px;
   font-weight: 300;
   letter-spacing: 3px;
@@ -1320,7 +1305,7 @@ nav {
 
 .popup-container input {
   max-width: 100%;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   width: 480px;
   padding: 12px;
   margin: 20px;
@@ -1332,7 +1317,7 @@ nav {
 
 .popup-container .signin-form input {
   max-width: 100%;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   width: 1000px;
   padding: 12px;
   margin: 0;
@@ -1350,7 +1335,7 @@ nav {
   padding: 7px 40px;
   letter-spacing: 2px;
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   cursor: pointer;
 }
 
@@ -1362,7 +1347,7 @@ nav {
   padding: 7px 40px;
   letter-spacing: 2px;
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   cursor: pointer;
 }
 
@@ -1373,19 +1358,19 @@ nav {
 
 .popup-container button .close-popup {
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
 }
 
 .popup-container .popup-link {
   font-size: 20px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   letter-spacing: 2px;
   color: #333;
 }
 
 .popup-container .popup-link span {
   font-size: 20px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   color: #d0aa84;
   cursor: pointer;
   letter-spacing: 2px;
@@ -1403,7 +1388,7 @@ nav {
     justify-content: space-evenly;
     align-items: center;
     gap: 20px;
-}
+  }
   .shop-by-room {
     height: auto; /* Biarkan tinggi menyesuaikan konten */
     padding: 20px 10px; /* Tambahkan padding agar lebih rapi */
@@ -1440,7 +1425,6 @@ nav {
 
   .container {
     padding: 20px 40px; /* Kurangi padding agar lebih pas */
-    
   }
 
   .card {
@@ -1490,7 +1474,6 @@ nav {
     font-size: 14px; /* Ukuran teks lebih kecil */
     padding: 8px;
   }
-  
 }
 
 @media screen and (max-width: 1300px) {
@@ -1549,7 +1532,7 @@ nav {
     max-width: 100%; /* Biarkan teks memenuhi container */
   }
 
-  .luxury-text h2, 
+  .luxury-text h2,
   .luxury-text h3 {
     font-size: 50px; /* Kurangi ukuran judul agar tetap terbaca */
   }
@@ -1562,20 +1545,19 @@ nav {
     font-size: 14px; /* Ukuran teks lebih kecil agar tidak terlalu panjang */
   }
 
-  .luxury-images1, 
+  .luxury-images1,
   .luxury-images2 {
     flex-direction: column; /* Ubah menjadi kolom untuk layar kecil */
     align-items: center;
     padding-top: 20px;
   }
 
-  .luxury-images1 img, 
+  .luxury-images1 img,
   .luxury-images2 img {
     max-width: 100%; /* Biarkan gambar menyesuaikan layar */
     height: 100px; /* Sesuaikan tinggi otomatis */
     margin-left: 10px; /* Hilangkan margin kiri */
     margin-top: 0;
-
   }
 
   .find-products p {
@@ -1738,7 +1720,8 @@ nav {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -1752,7 +1735,7 @@ nav {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -1832,7 +1815,7 @@ nav {
   .info-item span {
     font-size: 22px;
   }
-  
+
   .services-section {
     padding: 30px 10px;
   }
@@ -1949,7 +1932,8 @@ nav {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -1963,7 +1947,7 @@ nav {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -1988,7 +1972,7 @@ nav {
     height: auto;
     padding: 20px;
     margin-bottom: 50px;
-}
+  }
   .info {
     position: relative;
   }
@@ -2135,13 +2119,13 @@ nav {
     font-size: 8px;
     letter-spacing: 1px;
   }
-  .luxury-text h2, 
+  .luxury-text h2,
   .luxury-text h3 {
     font-size: 40px; /* Ukuran lebih kecil untuk layar HP */
   }
 
   .luxury-text .luxury-subtitle {
-    font-size: 16px; 
+    font-size: 16px;
   }
 
   .luxury-text p {
@@ -2180,7 +2164,8 @@ nav {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -2194,7 +2179,7 @@ nav {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -2207,7 +2192,6 @@ nav {
   .luxury-section {
     padding: 20px;
   }
-  
 }
 
 @media screen and (max-width: 576px) {
@@ -2300,7 +2284,8 @@ nav {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -2314,7 +2299,7 @@ nav {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -2324,21 +2309,9 @@ nav {
   header nav a {
     font-size: 12px;
     padding: 0px;
-
   }
 
   .hamburger {
     display: flex;
   }
 }
-
-
-
-
-
-
-
-
-
-
-

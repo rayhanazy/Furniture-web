@@ -1,59 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Ephesis&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Ephesis&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 /* Reset */
 html {
   scroll-behavior: smooth;
 }
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-  
-  body {
-    font-family: 'Inria Serif', serif;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-  }
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  /* Animasi untuk halaman yang keluar */
-  body.exit {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+body {
+  font-family: "Inria Serif", serif;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
 
-  /* Navbar Styling */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animasi untuk halaman yang keluar */
+body.exit {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Navbar Styling */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 120px; 
-  padding: 0 50px; 
+  height: 120px;
+  padding: 0 50px;
   margin-bottom: 90px;
-  background-color: #fff; 
-  border-bottom: 2px solid #000000; 
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
-  position: sticky; 
+  background-color: #fff;
+  border-bottom: 2px solid #000000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 /* Logo */
 header .logo img {
-  width: 400px; 
-  height: auto; 
+  width: 400px;
+  height: auto;
   object-fit: contain;
 }
 
@@ -76,36 +74,35 @@ header .logo img {
 
 /* Efek silang saat aktif */
 .hamburger.active div:nth-child(1) {
-transform: translateY(12px) rotate(45deg);
+  transform: translateY(12px) rotate(45deg);
 }
 
 .hamburger.active div:nth-child(2) {
-opacity: 0;
+  opacity: 0;
 }
 
 .hamburger.active div:nth-child(3) {
-transform: translateY(-12px) rotate(-45deg);
+  transform: translateY(-12px) rotate(-45deg);
 }
 
 nav {
-display: flex;
-gap: 70px;
-font-family: "Inria Serif", serif;
-
+  display: flex;
+  gap: 70px;
+  font-family: "Inria Serif", serif;
 }
 
 header nav a {
-  text-decoration: none; 
-  color: #333; 
-  font-size: 22px; 
+  text-decoration: none;
+  color: #333;
+  font-size: 22px;
   letter-spacing: 3px;
-  position: relative; 
+  position: relative;
   padding: 10px 0;
 }
 
 header nav a:hover {
-  color: #000; 
-  transform: translateY(0) scale(1.1); 
+  color: #000;
+  transform: translateY(0) scale(1.1);
 }
 
 header nav a:after {
@@ -202,7 +199,7 @@ body.no-scroll {
 }
 
 .search .search-popup .search-container input {
-  font-family: 'Fustat';
+  font-family: "Fustat";
   font-size: 20px;
   margin: 0;
   padding: 0 0 5px 0;
@@ -256,7 +253,6 @@ button {
   display: block; /* Menghilangkan margin default */
 }
 
-
 /* Ikon User dan Search */
 header .search img {
   width: 40px;
@@ -291,63 +287,62 @@ header .icons {
 }
 
 .gallery-living {
-    height: 500px;
-    background: url('../img/galeri-living.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    margin-bottom: 60px;
-  }
-  
-  .living-text h1 {
-    font-size: 80px;
-    font-family: 'Aboreto';
-    font-weight: 300;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    background: transparent;
-    padding: 20px;
-    border-radius: 10px;
-  }
+  height: 500px;
+  background: url("../img/galeri-living.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 60px;
+}
 
-  .living-furniture {
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px;
+.living-text h1 {
+  font-size: 80px;
+  font-family: "Aboreto";
+  font-weight: 300;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.living-furniture {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .breadcrumb {
-  font-family: 'Abel';
+  font-family: "Abel";
   text-align: center;
-    font-size: 25px;
-    color: rgb(0, 0, 0);
-    margin-bottom: 50px;
-    
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 50px;
 }
 
 .living-furniture h1 {
-  font-family: 'Abel';
+  font-family: "Abel";
   font-weight: 300;
-    font-size: 50px;
-    text-align: center;
-    margin-bottom: 70px;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 70px;
 }
 
 .living-furniture h2 {
-  font-family: 'Abel';
-    font-size: 30px;
-    font-weight: 300;
-    text-align: left;
-    margin: 0;
+  font-family: "Abel";
+  font-size: 30px;
+  font-weight: 300;
+  text-align: left;
+  margin: 0;
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 2fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 20px;
 }
 
 .item {
@@ -355,21 +350,20 @@ header .icons {
 }
 
 .item img {
-    width: 300px;
-    object-fit: cover;
-    height: 200px;
-    margin-bottom: 10px;
+  width: 300px;
+  object-fit: cover;
+  height: 200px;
+  margin-bottom: 10px;
 }
 
 .item-text {
-  font-family: 'Abel';
+  font-family: "Abel";
   font-size: 25px;
   display: flex;
   justify-content: space-between;
   justify-items: center;
   margin: 0;
   align-items: center;
-  
 }
 
 .item-text p {
@@ -388,7 +382,7 @@ header .icons {
 
 .discover .discover-text h1 {
   font-size: 40px;
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-weight: 300;
   margin: 0 0 30px 0;
   color: #222;
@@ -396,7 +390,7 @@ header .icons {
 
 .discover .discover-text p {
   font-size: 18px;
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   margin: 0;
   color: #000000;
 }
@@ -414,17 +408,17 @@ header .icons {
 .offerings .text-content h2 {
   font-size: 40px;
   font-weight: 400;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   margin: 0 0 20px 0;
   color: #000000;
 }
 
 .offerings .text-content p {
-  font-family: 'Abel';
+  font-family: "Abel";
   font-size: 20px;
   margin-bottom: 15px;
   text-align: justify;
-} 
+}
 
 .image-content {
   flex: 1;
@@ -447,7 +441,7 @@ header .icons {
 }
 
 .choose h1 {
-  font-family: 'Fustat';
+  font-family: "Fustat";
   font-size: 40px;
   font-weight: 400;
   margin: 20px 0 10px 0;
@@ -455,7 +449,7 @@ header .icons {
 }
 
 .choose p {
-  font-family: 'Abel';
+  font-family: "Abel";
   font-size: 20px;
   margin-bottom: 20px;
 }
@@ -466,9 +460,8 @@ header .icons {
   gap: 70px;
 }
 
-
 .feature h2 {
-  font-family: 'Fustat';
+  font-family: "Fustat";
   font-size: 30px;
   font-weight: 400;
   color: #000;
@@ -477,7 +470,7 @@ header .icons {
 
 .feature p {
   color: #000000;
-  font-family: 'Abel';
+  font-family: "Abel";
   font-size: 20px;
 }
 
@@ -492,7 +485,7 @@ header .icons {
 }
 
 .footer-section h4 {
-  font-family: 'Istok Web', serif;
+  font-family: "Istok Web", serif;
   font-weight: 300;
   margin-bottom: 10px;
   font-size: 25px;
@@ -508,7 +501,7 @@ header .icons {
 }
 
 .footer-section ul li a {
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
   font-size: 20px;
   line-height: 1.8;
   text-decoration: none;
@@ -517,14 +510,14 @@ header .icons {
 }
 
 .footer-section ul li a:hover {
-  color: #007BFF;
+  color: #007bff;
 }
 
 .footer-section p {
   margin: 5px 0;
   font-size: 20px;
   line-height: 2;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
 }
 
 .footer-section a {
@@ -532,11 +525,11 @@ header .icons {
   color: #000;
   font-size: 20px;
   line-height: 1.8;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
 }
 
 .footer-section a:hover {
-  color: #007BFF;
+  color: #007bff;
 }
 
 .footer-section form {
@@ -556,7 +549,7 @@ header .icons {
 
 .subscribe {
   background-color: white;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
   border: 1px solid #ccc;
   margin-top: 20px;
   padding: 5px 0 5px 15px;
@@ -571,7 +564,7 @@ header .icons {
 }
 
 .subscribe img {
-  width: 25px;;
+  width: 25px;
   height: auto;
 }
 
@@ -597,14 +590,14 @@ header .icons {
 }
 
 .footer-bottom .footer-info {
-  font-family: 'Instrument Sans', serif;
+  font-family: "Instrument Sans", serif;
   font-size: 16px;
   text-align: center; /* Paragraf di tengah */
   flex: 1;
 }
 
 .footer-bottom .privacy-policy {
-  font-family: 'Instrument Sans', serif;
+  font-family: "Instrument Sans", serif;
   font-size: 16px;
   text-align: right; /* "Privacy & Cookies Policy" di kanan */
   flex: 1;
@@ -618,7 +611,6 @@ header .icons {
 .footer-bottom a:hover {
   text-decoration: underline;
 }
-
 
 /* Base Popup Styles */
 .popup {
@@ -712,7 +704,7 @@ header .icons {
 }
 
 .popup-container h1 {
-  font-family: 'Ephesis', serif;
+  font-family: "Ephesis", serif;
   font-weight: 300;
   color: #d0aa84;
   letter-spacing: 15px;
@@ -721,7 +713,7 @@ header .icons {
 }
 
 .popup-container h2 {
-  font-family: 'Aboreto';
+  font-family: "Aboreto";
   font-size: 40px;
   font-weight: 300;
   letter-spacing: 3px;
@@ -749,7 +741,7 @@ header .icons {
 
 .popup-container input {
   max-width: 100%;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   width: 480px;
   padding: 12px;
   margin: 10px 10px;
@@ -761,7 +753,7 @@ header .icons {
 
 .popup-container .signin-form input {
   max-width: 100%;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   width: 1000px;
   padding: 12px;
   margin: 0;
@@ -781,7 +773,7 @@ header .icons {
   border: 1px solid #d0aa84;
   letter-spacing: 2px;
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   cursor: pointer;
 }
 
@@ -793,7 +785,7 @@ header .icons {
   padding: 7px 40px;
   letter-spacing: 2px;
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   cursor: pointer;
 }
 
@@ -813,12 +805,12 @@ header .icons {
 
 .popup-container button .close-popup {
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
 }
 
 .popup-container .popup-link {
   font-size: 20px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   letter-spacing: 2px;
   color: #333;
   margin: 0;
@@ -826,7 +818,7 @@ header .icons {
 
 .popup-container .popup-link span {
   font-size: 20px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   color: #d0aa84;
   cursor: pointer;
   letter-spacing: 2px;
@@ -848,7 +840,8 @@ header .icons {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -862,7 +855,7 @@ header .icons {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -875,95 +868,95 @@ header .icons {
   .gallery-living {
     height: 400px;
     margin-bottom: 40px;
-}
+  }
 
-.living-text h1 {
+  .living-text h1 {
     font-size: 60px;
     letter-spacing: 3px;
     padding: 15px;
-}
+  }
 
-.living-furniture {
+  .living-furniture {
     width: 95%;
     padding: 15px;
-}
+  }
 
-.breadcrumb {
+  .breadcrumb {
     font-size: 20px;
     margin-bottom: 40px;
-}
+  }
 
-.living-furniture h1 {
+  .living-furniture h1 {
     font-size: 40px;
     margin-bottom: 50px;
-}
+  }
 
-.living-furniture h2 {
+  .living-furniture h2 {
     font-size: 25px;
-}
+  }
 
-.gallery {
+  .gallery {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-}
+  }
 
-.item img {
+  .item img {
     width: 250px;
     height: 180px;
-}
+  }
 
-.item-text {
+  .item-text {
     font-size: 22px;
-}
-.garis {
-  width: 1300px;
-}
-.discover {
-  margin: 0 50px;
-  padding: 15px;
-}
+  }
+  .garis {
+    width: 1300px;
+  }
+  .discover {
+    margin: 0 50px;
+    padding: 15px;
+  }
 
-.discover .discover-text h1 {
-  font-size: 35px;
-}
+  .discover .discover-text h1 {
+    font-size: 35px;
+  }
 
-.discover .discover-text p {
-  font-size: 16px;
-}
+  .discover .discover-text p {
+    font-size: 16px;
+  }
 
-.offerings {
-  gap: 15px;
-}
+  .offerings {
+    gap: 15px;
+  }
 
-.offerings .text-content h2 {
-  font-size: 35px;
-}
+  .offerings .text-content h2 {
+    font-size: 35px;
+  }
 
-.offerings .text-content p {
-  font-size: 18px;
-}
+  .offerings .text-content p {
+    font-size: 18px;
+  }
 
-.image-content img {
-  max-width: 500px;
-  height: auto;
-}
-.choose {
-  margin: 40px 50px;
-  padding: 15px;
-}
+  .image-content img {
+    max-width: 500px;
+    height: auto;
+  }
+  .choose {
+    margin: 40px 50px;
+    padding: 15px;
+  }
 
-.choose h1 {
-  font-size: 35px;
-}
+  .choose h1 {
+    font-size: 35px;
+  }
 
-.choose p {
-  font-size: 18px;
-}
+  .choose p {
+    font-size: 18px;
+  }
 
-.features {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
-}
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -978,7 +971,8 @@ header .icons {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -992,7 +986,7 @@ header .icons {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -1017,7 +1011,7 @@ header .icons {
     height: auto;
     padding: 20px;
     margin-bottom: 50px;
-}
+  }
 
   .footer-section h4 {
     margin-top: 33px;
@@ -1025,61 +1019,61 @@ header .icons {
   }
   .gallery-living {
     height: 300px;
-}
+  }
 
-.living-text h1 {
+  .living-text h1 {
     font-size: 50px;
-}
+  }
 
-.gallery {
+  .gallery {
     grid-template-columns: repeat(2, 1fr);
-}
+  }
 
-.item img {
+  .item img {
     width: 200px;
     height: 150px;
-}
+  }
   .discover {
     margin: 0 30px;
-}
+  }
 
-.discover .discover-text h1 {
+  .discover .discover-text h1 {
     font-size: 30px;
-}
+  }
 
-.offerings {
+  .offerings {
     flex-direction: column;
     align-items: center;
-}
+  }
 
-.offerings .text-content h2 {
+  .offerings .text-content h2 {
     font-size: 30px;
     text-align: center;
-}
+  }
 
-.offerings .text-content p {
+  .offerings .text-content p {
     text-align: center;
-}
+  }
 
-.image-content img {
+  .image-content img {
     max-width: 400px;
-}
-.choose {
-  margin: 30px;
-}
+  }
+  .choose {
+    margin: 30px;
+  }
 
-.choose h1 {
-  font-size: 30px;
-}
+  .choose h1 {
+    font-size: 30px;
+  }
 
-.choose p {
-  font-size: 16px;
-}
+  .choose p {
+    font-size: 16px;
+  }
 
-.features {
-  grid-template-columns: repeat(1, 1fr);
-  gap: 30px;
-}
+  .features {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1101,7 +1095,8 @@ header .icons {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -1115,7 +1110,7 @@ header .icons {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -1127,70 +1122,70 @@ header .icons {
   }
   .gallery-living {
     height: 250px;
-}
+  }
 
-.living-text h1 {
+  .living-text h1 {
     font-size: 40px;
-}
+  }
 
-.breadcrumb {
+  .breadcrumb {
     font-size: 18px;
-}
+  }
 
-.living-furniture h1 {
+  .living-furniture h1 {
     font-size: 30px;
-}
+  }
 
-.gallery {
+  .gallery {
     grid-template-columns: repeat(1, 1fr);
-}
+  }
 
-.item img {
+  .item img {
     width: 100%;
     height: auto;
-}
+  }
   .discover {
     margin: 0 20px;
-}
+  }
 
-.discover .discover-text h1 {
+  .discover .discover-text h1 {
     font-size: 25px;
-}
+  }
 
-.discover .discover-text p {
+  .discover .discover-text p {
     font-size: 14px;
-}
+  }
 
-.offerings .text-content h2 {
+  .offerings .text-content h2 {
     font-size: 25px;
-}
+  }
 
-.offerings .text-content p {
+  .offerings .text-content p {
     font-size: 16px;
-}
+  }
 
-.image-content img {
+  .image-content img {
     max-width: 100%;
-}
-.choose {
-  margin: 20px;
-}
+  }
+  .choose {
+    margin: 20px;
+  }
 
-.choose h1 {
-  font-size: 23px;
-}
-.feature h2 {
-  font-size: 23px;
-}
+  .choose h1 {
+    font-size: 23px;
+  }
+  .feature h2 {
+    font-size: 23px;
+  }
 
-.choose p {
-  font-size: 14px;
-}
+  .choose p {
+    font-size: 14px;
+  }
 
-.features {
-  grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
-}
+  .features {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -1208,7 +1203,8 @@ header .icons {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -1222,7 +1218,7 @@ header .icons {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -1232,44 +1228,8 @@ header .icons {
   header nav a {
     font-size: 12px;
     padding: 0px;
-
   }
   .hamburger {
     display: flex;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

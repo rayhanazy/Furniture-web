@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Aboreto&family=Agdasima:wght@400;700&family=Beau+Rivage&family=Fustat:wght@200..800&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 html {
   scroll-behavior: smooth;
 }
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-  
+
 body {
   opacity: 0;
   animation: fadeIn 1s forwards;
@@ -36,258 +36,254 @@ body.exit {
   transition: opacity 1s ease-in-out;
 }
 
+/* Ikon User dan Search */
+header .search img {
+  width: 40px;
+  height: auto;
+  margin-top: 5px;
+  cursor: pointer;
+}
+header .user img {
+  width: 45px;
+  height: auto;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-  
-  
-  /* Ikon User dan Search */
-  header .search img {
-    width: 40px;
-    height: auto;
-    margin-top: 5px;
-    cursor: pointer;
-  }
-  header .user img {
-    width: 45px;
-    height: auto;
-    margin: 0;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  header .user img:hover {
-    text-decoration: none;
-  }
-  
-  header .search img:hover,
-  header .user img:hover {
-    color: #000; /* Warna saat hover */
-    transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
-    text-decoration: none;
-  }
-  
-  /* Wrapper untuk User dan Search */
-  header .icons {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Jarak antar ikon */
-  }  /* Navbar Styling */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 120px; /* Tinggi navbar */
-    padding: 0 50px; /* Jarak padding kiri dan kanan */
-    margin-bottom: 90px;
-    background-color: #fff; /* Warna latar belakang navbar */
-    border-bottom: 2px solid #000000; /* Garis bawah navbar */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Shadow halus di bawah navbar */
-    position: sticky; 
-    top: 0;
-    z-index: 1000;
-  }
-  
-  /* Logo */
-  header .logo img {
-    width: 400px; /* Ukuran logo */
-    height: auto; /* Memastikan proporsi logo */
-    object-fit: contain;
-  }
-  
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    z-index: 1100;
-    position: absolute;
-    right: 50px;
-  }
-  
-  .hamburger div {
-    width: 30px;
-    height: 2px;
-    background-color: black;
-    margin: 5px;
-    transition: transform 0.4s, opacity 0.4s;
-  }
-  
-  /* Efek silang saat aktif */
-  .hamburger.active div:nth-child(1) {
+header .user img:hover {
+  text-decoration: none;
+}
+
+header .search img:hover,
+header .user img:hover {
+  color: #000; /* Warna saat hover */
+  transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
+  text-decoration: none;
+}
+
+/* Wrapper untuk User dan Search */
+header .icons {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Jarak antar ikon */
+} /* Navbar Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px; /* Tinggi navbar */
+  padding: 0 50px; /* Jarak padding kiri dan kanan */
+  margin-bottom: 90px;
+  background-color: #fff; /* Warna latar belakang navbar */
+  border-bottom: 2px solid #000000; /* Garis bawah navbar */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Shadow halus di bawah navbar */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+header .logo img {
+  width: 400px; /* Ukuran logo */
+  height: auto; /* Memastikan proporsi logo */
+  object-fit: contain;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1100;
+  position: absolute;
+  right: 50px;
+}
+
+.hamburger div {
+  width: 30px;
+  height: 2px;
+  background-color: black;
+  margin: 5px;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+/* Efek silang saat aktif */
+.hamburger.active div:nth-child(1) {
   transform: translateY(12px) rotate(45deg);
-  }
-  
-  .hamburger.active div:nth-child(2) {
+}
+
+.hamburger.active div:nth-child(2) {
   opacity: 0;
-  }
-  
-  .hamburger.active div:nth-child(3) {
+}
+
+.hamburger.active div:nth-child(3) {
   transform: translateY(-12px) rotate(-45deg);
-  }
-  
-  nav {
+}
+
+nav {
   display: flex;
   gap: 70px;
   font-family: "Inria Serif", serif;
-  
-  }
-  
-  header nav a {
-    text-decoration: none; /* Hilangkan garis bawah */
-    color: #333; /* Warna teks */
-    font-size: 22px; /* Ukuran font menu */
-    letter-spacing: 3px;
-    position: relative; /* Untuk efek hover */
-    padding: 10px 0;
-  }
-  
-  header nav a:hover {
-    color: #000; /* Warna saat hover */
-    transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
-  }
-  
-  header nav a:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #000; /* Warna garis hover */
-    transition: width 0.3s ease;
-  }
-  
-  header nav a:hover:after {
-    width: 100%; /* Animasi garis hover */
-  }
-  
-  /* CSS untuk backdrop (latar belakang gelap) */
-  .darker {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Transparansi */
-    display: none; /* Sembunyikan secara default */
-    z-index: 999; /* Pastikan berada di atas konten lainnya */
-  }
-  
-  /* Popup pencarian */
-  .search-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    max-width: 100%; /* Memenuhi lebar layar */
-    width: 100%;
-    height: 180px; /* Tinggi area popup */
-    background-color: white; /* Latar belakang putih */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Bayangan lembut */
-    align-content: center;
-    transform: translateY(-180px); /* Sembunyikan di atas layar */
-    opacity: 0; /* Awalnya tidak terlihat */
-    transition: transform 1s ease, opacity 1s ease; /* Animasi halus */
-    z-index: 1000; /* Tetap di atas elemen lainnya */
-    border-bottom-left-radius: 70px;
-    border-bottom-right-radius: 70px;
-  }
-  
-  /* Saat pop-up aktif (tampil) */
-  .search-popup.active {
-    transform: translateY(0); /* Turun ke posisi normal */
-    opacity: 1; /* Tampilkan */
-  }
-  
-  /* Menonaktifkan scroll pada body */
-  body.no-scroll {
-    overflow: hidden;
-  }
-  
-  /* Pastikan klik di backdrop tidak menutup pop-up */
-  .darker.active {
-    display: block;
-    pointer-events: none; /* Nonaktifkan interaksi dengan backdrop */
-  }
-  
-  .darker.no-click {
-    pointer-events: none; /* Overlay tidak bisa diklik */
-  }
-  
-  /* Kotak pencarian */
-  .search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Jarak antar elemen */
-    width: 800px; /* Lebar kotak pencarian */
-    max-width: 800px; /* Batas maksimal */
-    margin-left: 370px;
-    position: relative;
-  }
-  
-  /* Input pencarian */
-  .search-container input[type="text"] {
-    flex: 1; /* Mengisi ruang yang tersedia */
-    padding: 10px 0 10px 15px;
-    font-size: 16px;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid #777877;
-  }
-  
-  .search .search-popup .search-container input {
-    font-family: 'Fustat';
-    font-size: 20px;
-    margin: 0;
-    padding: 0 0 5px 0;
-  }
-  
-  /* Ikon pencarian di kanan */
-  .search-container .input-icon {
-    position: absolute;
-    right: 0px;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 15px;
-    cursor: pointer;
-  }
-  
-  /* Tombol tutup (close) */
-  .search-container .close-icon {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    font-size: 20px;
-    background: none;
-    border: none;
-    color: black;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-  }
-  
-  button {
-    background-color: white;
-    border: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  /* Tombol tutup (close) */
-  .close-icon {
-    position: absolute;
-    top: 40px; /* Jarak dari atas */
-    right: 250px; /* Jarak dari kanan */
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1010; /* Pastikan di atas */
-  }
-  
-  /* Gambar tombol tutup */
-  .search .close-icon img {
-    width: 30px; /* Ukuran ikon */
-    height: 30px;
-    display: block; /* Menghilangkan margin default */
-  }
-  /* Ikon User dan Search */
+}
+
+header nav a {
+  text-decoration: none; /* Hilangkan garis bawah */
+  color: #333; /* Warna teks */
+  font-size: 22px; /* Ukuran font menu */
+  letter-spacing: 3px;
+  position: relative; /* Untuk efek hover */
+  padding: 10px 0;
+}
+
+header nav a:hover {
+  color: #000; /* Warna saat hover */
+  transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
+}
+
+header nav a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Warna garis hover */
+  transition: width 0.3s ease;
+}
+
+header nav a:hover:after {
+  width: 100%; /* Animasi garis hover */
+}
+
+/* CSS untuk backdrop (latar belakang gelap) */
+.darker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Transparansi */
+  display: none; /* Sembunyikan secara default */
+  z-index: 999; /* Pastikan berada di atas konten lainnya */
+}
+
+/* Popup pencarian */
+.search-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: 100%; /* Memenuhi lebar layar */
+  width: 100%;
+  height: 180px; /* Tinggi area popup */
+  background-color: white; /* Latar belakang putih */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Bayangan lembut */
+  align-content: center;
+  transform: translateY(-180px); /* Sembunyikan di atas layar */
+  opacity: 0; /* Awalnya tidak terlihat */
+  transition: transform 1s ease, opacity 1s ease; /* Animasi halus */
+  z-index: 1000; /* Tetap di atas elemen lainnya */
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+}
+
+/* Saat pop-up aktif (tampil) */
+.search-popup.active {
+  transform: translateY(0); /* Turun ke posisi normal */
+  opacity: 1; /* Tampilkan */
+}
+
+/* Menonaktifkan scroll pada body */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Pastikan klik di backdrop tidak menutup pop-up */
+.darker.active {
+  display: block;
+  pointer-events: none; /* Nonaktifkan interaksi dengan backdrop */
+}
+
+.darker.no-click {
+  pointer-events: none; /* Overlay tidak bisa diklik */
+}
+
+/* Kotak pencarian */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antar elemen */
+  width: 800px; /* Lebar kotak pencarian */
+  max-width: 800px; /* Batas maksimal */
+  margin-left: 370px;
+  position: relative;
+}
+
+/* Input pencarian */
+.search-container input[type="text"] {
+  flex: 1; /* Mengisi ruang yang tersedia */
+  padding: 10px 0 10px 15px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #777877;
+}
+
+.search .search-popup .search-container input {
+  font-family: "Fustat";
+  font-size: 20px;
+  margin: 0;
+  padding: 0 0 5px 0;
+}
+
+/* Ikon pencarian di kanan */
+.search-container .input-icon {
+  position: absolute;
+  right: 0px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* Tombol tutup (close) */
+.search-container .close-icon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+button {
+  background-color: white;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Tombol tutup (close) */
+.close-icon {
+  position: absolute;
+  top: 40px; /* Jarak dari atas */
+  right: 250px; /* Jarak dari kanan */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1010; /* Pastikan di atas */
+}
+
+/* Gambar tombol tutup */
+.search .close-icon img {
+  width: 30px; /* Ukuran ikon */
+  height: 30px;
+  display: block; /* Menghilangkan margin default */
+}
+/* Ikon User dan Search */
 header .search img {
   width: 40px;
   height: auto;
@@ -321,63 +317,62 @@ header .icons {
 }
 
 .gallery-bed {
-    height: 500px;
-    background: url('../img/gallery-bed.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    margin-bottom: 60px;
-  }
-  
-  .bed-text h1 {
-    font-size: 80px;
-    font-family: 'Aboreto';
-    font-weight: 300;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    background: transparent;
-    padding: 20px;
-    border-radius: 10px;
-  }
+  height: 500px;
+  background: url("../img/gallery-bed.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 60px;
+}
 
-  .bed-furniture {
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px;
+.bed-text h1 {
+  font-size: 80px;
+  font-family: "Aboreto";
+  font-weight: 300;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.bed-furniture {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .breadcrumb {
-  font-family: 'Abel';
+  font-family: "Abel";
   text-align: center;
-    font-size: 25px;
-    color: rgb(0, 0, 0);
-    margin-bottom: 50px;
-    
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 50px;
 }
 
 .bed-furniture h1 {
-  font-family: 'Abel';
+  font-family: "Abel";
   font-weight: 300;
-    font-size: 50px;
-    text-align: center;
-    margin-bottom: 70px;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 70px;
 }
 
 .bed-furniture h2 {
-  font-family: 'Abel';
-    font-size: 30px;
-    font-weight: 300;
-    text-align: left;
-    margin: 0;
+  font-family: "Abel";
+  font-size: 30px;
+  font-weight: 300;
+  text-align: left;
+  margin: 0;
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 2fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 20px;
 }
 
 .item {
@@ -385,21 +380,20 @@ header .icons {
 }
 
 .item img {
-    width: 300px;
-    object-fit: cover;
-    height: 200px;
-    margin-bottom: 10px;
+  width: 300px;
+  object-fit: cover;
+  height: 200px;
+  margin-bottom: 10px;
 }
 
 .item-text {
-  font-family: 'Abel';
+  font-family: "Abel";
   font-size: 25px;
   display: flex;
   justify-content: space-between;
   justify-items: center;
   margin: 0;
   align-items: center;
-  
 }
 
 .item-text p {
@@ -418,7 +412,7 @@ header .icons {
 
 .discover .discover-text h1 {
   font-size: 40px;
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   font-weight: 300;
   margin: 0 0 30px 0;
   color: #222;
@@ -426,7 +420,7 @@ header .icons {
 
 .discover .discover-text p {
   font-size: 18px;
-  font-family: 'Istok Web';
+  font-family: "Istok Web";
   margin: 0;
   color: #000000;
 }
@@ -444,17 +438,17 @@ header .icons {
 .offerings .text-content h2 {
   font-size: 40px;
   font-weight: 400;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   margin: 0 0 20px 0;
   color: #000000;
 }
 
 .offerings .text-content p {
-  font-family: 'Abel';
+  font-family: "Abel";
   font-size: 20px;
   margin-bottom: 15px;
   text-align: justify;
-} 
+}
 
 .image-content {
   flex: 1;
@@ -477,7 +471,7 @@ header .icons {
 }
 
 .choose h1 {
-  font-family: 'Fustat';
+  font-family: "Fustat";
   font-size: 40px;
   font-weight: 400;
   margin: 20px 0 10px 0;
@@ -485,7 +479,7 @@ header .icons {
 }
 
 .choose p {
-  font-family: 'Abel';
+  font-family: "Abel";
   font-size: 20px;
   margin-bottom: 20px;
 }
@@ -496,9 +490,8 @@ header .icons {
   gap: 70px;
 }
 
-
 .feature h2 {
-  font-family: 'Fustat';
+  font-family: "Fustat";
   font-size: 30px;
   font-weight: 400;
   color: #000;
@@ -507,7 +500,7 @@ header .icons {
 
 .feature p {
   color: #000000;
-  font-family: 'Abel';
+  font-family: "Abel";
   font-size: 20px;
 }
 
@@ -522,7 +515,7 @@ header .icons {
 }
 
 .footer-section h4 {
-  font-family: 'Istok Web', serif;
+  font-family: "Istok Web", serif;
   font-weight: 300;
   margin-bottom: 10px;
   font-size: 25px;
@@ -538,7 +531,7 @@ header .icons {
 }
 
 .footer-section ul li a {
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
   font-size: 20px;
   line-height: 1.8;
   text-decoration: none;
@@ -547,14 +540,14 @@ header .icons {
 }
 
 .footer-section ul li a:hover {
-  color: #007BFF;
+  color: #007bff;
 }
 
 .footer-section p {
   margin: 5px 0;
   font-size: 20px;
   line-height: 2;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
 }
 
 .footer-section a {
@@ -562,11 +555,11 @@ header .icons {
   color: #000;
   font-size: 20px;
   line-height: 1.8;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
 }
 
 .footer-section a:hover {
-  color: #007BFF;
+  color: #007bff;
 }
 
 .footer-section form {
@@ -586,7 +579,7 @@ header .icons {
 
 .subscribe {
   background-color: white;
-  font-family: 'Fustat', serif;
+  font-family: "Fustat", serif;
   border: 1px solid #ccc;
   margin-top: 20px;
   padding: 5px 0 5px 15px;
@@ -601,7 +594,7 @@ header .icons {
 }
 
 .subscribe img {
-  width: 25px;;
+  width: 25px;
   height: auto;
 }
 
@@ -627,14 +620,14 @@ header .icons {
 }
 
 .footer-bottom .footer-info {
-  font-family: 'Instrument Sans', serif;
+  font-family: "Instrument Sans", serif;
   font-size: 16px;
   text-align: center; /* Paragraf di tengah */
   flex: 1;
 }
 
 .footer-bottom .privacy-policy {
-  font-family: 'Instrument Sans', serif;
+  font-family: "Instrument Sans", serif;
   font-size: 16px;
   text-align: right; /* "Privacy & Cookies Policy" di kanan */
   flex: 1;
@@ -741,7 +734,7 @@ header .icons {
 }
 
 .popup-container h1 {
-  font-family: 'Ephesis', serif;
+  font-family: "Ephesis", serif;
   font-weight: 300;
   color: #d0aa84;
   letter-spacing: 15px;
@@ -750,7 +743,7 @@ header .icons {
 }
 
 .popup-container h2 {
-  font-family: 'Aboreto';
+  font-family: "Aboreto";
   font-size: 40px;
   font-weight: 300;
   letter-spacing: 3px;
@@ -778,7 +771,7 @@ header .icons {
 
 .popup-container input {
   max-width: 100%;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   width: 480px;
   padding: 12px;
   margin: 10px 10px;
@@ -790,7 +783,7 @@ header .icons {
 
 .popup-container .signin-form input {
   max-width: 100%;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   width: 1000px;
   padding: 12px;
   margin: 0;
@@ -810,7 +803,7 @@ header .icons {
   border: 1px solid #d0aa84;
   letter-spacing: 2px;
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   cursor: pointer;
 }
 
@@ -822,7 +815,7 @@ header .icons {
   padding: 7px 40px;
   letter-spacing: 2px;
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   cursor: pointer;
 }
 
@@ -842,12 +835,12 @@ header .icons {
 
 .popup-container button .close-popup {
   font-size: 18px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
 }
 
 .popup-container .popup-link {
   font-size: 20px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   letter-spacing: 2px;
   color: #333;
   margin: 0;
@@ -855,7 +848,7 @@ header .icons {
 
 .popup-container .popup-link span {
   font-size: 20px;
-  font-family: 'Fustat';
+  font-family: "Fustat";
   color: #d0aa84;
   cursor: pointer;
   letter-spacing: 2px;
@@ -864,7 +857,6 @@ header .icons {
 .popup-container .popup-link span:hover {
   text-decoration: underline;
 }
-
 
 @media screen and (max-width: 1300px) {
   nav {
@@ -878,7 +870,8 @@ header .icons {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -892,7 +885,7 @@ header .icons {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -905,95 +898,95 @@ header .icons {
   .gallery-bed {
     height: 400px;
     margin-bottom: 40px;
-}
+  }
 
-.bed-text h1 {
+  .bed-text h1 {
     font-size: 60px;
     letter-spacing: 3px;
     padding: 15px;
-}
+  }
 
-.bed-furniture {
+  .bed-furniture {
     width: 95%;
     padding: 15px;
-}
+  }
 
-.breadcrumb {
+  .breadcrumb {
     font-size: 20px;
     margin-bottom: 40px;
-}
+  }
 
-.bed-furniture h1 {
+  .bed-furniture h1 {
     font-size: 40px;
     margin-bottom: 50px;
-}
+  }
 
-.bed-furniture h2 {
+  .bed-furniture h2 {
     font-size: 25px;
-}
+  }
 
-.gallery {
+  .gallery {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-}
+  }
 
-.item img {
+  .item img {
     width: 250px;
     height: 180px;
-}
+  }
 
-.item-text {
+  .item-text {
     font-size: 22px;
-}
-.garis {
-  width: 1300px;
-}
-.discover {
-  margin: 0 50px;
-  padding: 15px;
-}
+  }
+  .garis {
+    width: 1300px;
+  }
+  .discover {
+    margin: 0 50px;
+    padding: 15px;
+  }
 
-.discover .discover-text h1 {
-  font-size: 35px;
-}
+  .discover .discover-text h1 {
+    font-size: 35px;
+  }
 
-.discover .discover-text p {
-  font-size: 16px;
-}
+  .discover .discover-text p {
+    font-size: 16px;
+  }
 
-.offerings {
-  gap: 15px;
-}
+  .offerings {
+    gap: 15px;
+  }
 
-.offerings .text-content h2 {
-  font-size: 35px;
-}
+  .offerings .text-content h2 {
+    font-size: 35px;
+  }
 
-.offerings .text-content p {
-  font-size: 18px;
-}
+  .offerings .text-content p {
+    font-size: 18px;
+  }
 
-.image-content img {
-  max-width: 500px;
-  height: auto;
-}
-.choose {
-  margin: 40px 50px;
-  padding: 15px;
-}
+  .image-content img {
+    max-width: 500px;
+    height: auto;
+  }
+  .choose {
+    margin: 40px 50px;
+    padding: 15px;
+  }
 
-.choose h1 {
-  font-size: 35px;
-}
+  .choose h1 {
+    font-size: 35px;
+  }
 
-.choose p {
-  font-size: 18px;
-}
+  .choose p {
+    font-size: 18px;
+  }
 
-.features {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
-}
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -1008,7 +1001,8 @@ header .icons {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -1022,7 +1016,7 @@ header .icons {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -1047,7 +1041,7 @@ header .icons {
     height: auto;
     padding: 20px;
     margin-bottom: 50px;
-}
+  }
 
   .footer-section h4 {
     margin-top: 33px;
@@ -1055,61 +1049,61 @@ header .icons {
   }
   .gallery-bed {
     height: 300px;
-}
+  }
 
-.bed-text h1 {
+  .bed-text h1 {
     font-size: 50px;
-}
+  }
 
-.gallery {
+  .gallery {
     grid-template-columns: repeat(2, 1fr);
-}
+  }
 
-.item img {
+  .item img {
     width: 200px;
     height: 150px;
-}
+  }
   .discover {
     margin: 0 30px;
-}
+  }
 
-.discover .discover-text h1 {
+  .discover .discover-text h1 {
     font-size: 30px;
-}
+  }
 
-.offerings {
+  .offerings {
     flex-direction: column;
     align-items: center;
-}
+  }
 
-.offerings .text-content h2 {
+  .offerings .text-content h2 {
     font-size: 30px;
     text-align: center;
-}
+  }
 
-.offerings .text-content p {
+  .offerings .text-content p {
     text-align: center;
-}
+  }
 
-.image-content img {
+  .image-content img {
     max-width: 400px;
-}
-.choose {
-  margin: 30px;
-}
+  }
+  .choose {
+    margin: 30px;
+  }
 
-.choose h1 {
-  font-size: 30px;
-}
+  .choose h1 {
+    font-size: 30px;
+  }
 
-.choose p {
-  font-size: 16px;
-}
+  .choose p {
+    font-size: 16px;
+  }
 
-.features {
-  grid-template-columns: repeat(1, 1fr);
-  gap: 30px;
-}
+  .features {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1134,7 +1128,8 @@ header .icons {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -1148,7 +1143,7 @@ header .icons {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -1160,70 +1155,70 @@ header .icons {
   }
   .gallery-bed {
     height: 250px;
-}
+  }
 
-.bed-text h1 {
+  .bed-text h1 {
     font-size: 40px;
-}
+  }
 
-.breadcrumb {
+  .breadcrumb {
     font-size: 18px;
-}
+  }
 
-.bed-furniture h1 {
+  .bed-furniture h1 {
     font-size: 30px;
-}
+  }
 
-.gallery {
+  .gallery {
     grid-template-columns: repeat(1, 1fr);
-}
+  }
 
-.item img {
+  .item img {
     width: 100%;
     height: auto;
-}
+  }
   .discover {
     margin: 0 20px;
-}
+  }
 
-.discover .discover-text h1 {
+  .discover .discover-text h1 {
     font-size: 25px;
-}
+  }
 
-.discover .discover-text p {
+  .discover .discover-text p {
     font-size: 14px;
-}
+  }
 
-.offerings .text-content h2 {
+  .offerings .text-content h2 {
     font-size: 25px;
-}
+  }
 
-.offerings .text-content p {
+  .offerings .text-content p {
     font-size: 16px;
-}
+  }
 
-.image-content img {
+  .image-content img {
     max-width: 100%;
-}
-.choose {
-  margin: 20px;
-}
+  }
+  .choose {
+    margin: 20px;
+  }
 
-.choose h1 {
-  font-size: 23px;
-}
-.feature h2 {
-  font-size: 23px;
-}
+  .choose h1 {
+    font-size: 23px;
+  }
+  .feature h2 {
+    font-size: 23px;
+  }
 
-.choose p {
-  font-size: 14px;
-}
+  .choose p {
+    font-size: 14px;
+  }
 
-.features {
-  grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
-}
+  .features {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -1241,7 +1236,8 @@ header .icons {
     text-align: left;
     padding: 20px 0 20px 20px;
     right: -250px;
-    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out,
+      visibility 0.4s;
     opacity: 0;
     visibility: hidden;
     border-radius: 20px;
@@ -1255,7 +1251,7 @@ header .icons {
   }
 
   nav a:hover {
-    transform: translateY(0) scale(1.0);
+    transform: translateY(0) scale(1);
   }
 
   nav a:after {
@@ -1265,7 +1261,6 @@ header .icons {
   header nav a {
     font-size: 12px;
     padding: 0px;
-
   }
   .hamburger {
     display: flex;
