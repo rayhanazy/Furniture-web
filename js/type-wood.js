@@ -17,7 +17,7 @@ function togglePopup() {
   overlay.classList.toggle("active");
 
   // Efek saat overlay di-klik untuk menutup popup
-  overlay.onclick = function() {
+  overlay.onclick = function () {
     popup.classList.remove("active");
     overlay.classList.remove("active");
   };
@@ -30,10 +30,10 @@ function togglePopup() {
 function signupPopup() {
   const popup = document.getElementById("signupPopup");
   const overlay = document.getElementById("darkers");
-  
+
   popup.classList.remove("hide");
   popup.classList.add("show");
-  
+
   overlay.classList.add("active");
   document.body.style.overflow = "hidden"; // Mencegah scrolling
 }
@@ -122,8 +122,8 @@ function toggleMenu() {
 
   // Jika menu aktif, nonaktifkan scroll
   if (menu.classList.contains("active")) {
-      body.style.overflow = "hidden"; // Nonaktifkan scroll
+    body.style.overflow = "hidden"; // Nonaktifkan scroll
   } else {
-      body.style.overflow = "auto"; // Aktifkan kembali scroll
+    body.style.overflow = "auto"; // Aktifkan kembali scroll
   }
 }
