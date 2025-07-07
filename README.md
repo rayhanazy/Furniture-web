@@ -12,14 +12,6 @@ This project showcases a stylish layout for a furniture business or product cata
 
 ---
 
-## 🖼️ Preview
-
-![Furniture Website Preview](https://raw.githubusercontent.com/rayhanazy/Furniture-web/main/assets/images/furniture-preview.png)
-
-> _Homepage preview with modern layout, featured products, and clean UI design._
-
----
-
 ## ✨ Features
 
 - 🌐 Fully responsive layout for all screen sizes
