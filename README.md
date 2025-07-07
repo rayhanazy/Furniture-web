@@ -44,3 +44,41 @@ This project showcases a stylish layout for a furniture business or product cata
 
 ## 🗂️ Project Structure
 
+Furniture-web/
+
+├── assets/
+
+│ ├── css/
+
+│ ├── js/
+
+│ └── images/
+
+├── index.html
+
+└── README.md
+
+---
+
+## 🚀 How to Run Locally
+
+You can run this project locally by following these steps:
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/rayhanazy/Furniture-web.git
+
+### 2. Navigate to the project folder
+
+cd Furniture-web
+
+3. Open with a browser
+
+- Double-click on index.html
+or
+- Open with Live Server in Visual Studio Code
+```
+
+
+#### 🎉 Thank you for visiting this repository!
+Feel free to clone or explore the project and make it your own. Happy coding! ✨
