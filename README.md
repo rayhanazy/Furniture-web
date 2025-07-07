@@ -56,11 +56,11 @@ Furniture-web/
 
 You can run this project locally by following these steps:
 ```
-### 1. Clone the repository
+1. Clone the repository
 
 git clone https://github.com/rayhanazy/Furniture-web.git
 
-### 2. Navigate to the project folder
+2. Navigate to the project folder
 
 cd Furniture-web
 
