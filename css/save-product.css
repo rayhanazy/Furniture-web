@@ -1,0 +1,147 @@
+/* Reset */
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inria Serif", serif;
+  margin: 0;
+  padding: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animasi untuk halaman yang keluar */
+body.exit {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  border-bottom: 1px solid #ddd;
+}
+
+header img {
+  height: 40px;
+}
+
+header a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Page Title */
+.page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px 0 25px;
+}
+
+.page-title h2 {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.page-title button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Product Card */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 2px solid #d9c7aa;
+  border-radius: 12px;
+  margin: 10px 25px;
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  object-fit: cover;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.card-content p {
+  margin: 0 0 5px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4em;
+}
+
+.card-content small {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Footer Notice */
+.footer {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding: 15px 25px;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Checkout Section */
+.checkout {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 25px;
+}
+
+.checkout span {
+  font-size: 14px;
+}
+
+.checkout button {
+  background: #d9c7aa;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
