@@ -19,7 +19,7 @@
   <!-- Header -->
   <header>
     <div class="logo"><a href="index.html">
-        <img src="img\logo.jpg" alt="Logo Bengkel Kayoe"></a>
+        <img src="img/logo.jpg" alt="Logo Bengkel Kayoe"></a>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
       <div></div>
@@ -37,15 +37,27 @@
       <div class="search-popup" id="searchPopup">
         <div class="search-container">
           <input type="text" placeholder="Search Product">
-          <img src="img\search.png" alt="Search Icon" class="input-icon">
+          <img src="img/search.png" alt="Search Icon" class="input-icon">
         </div>
         <button class="close-icon" onclick="togglePopup()">
-          <img src="img\cancel.png"></button>
-      </div>
+          <img src="img/cancel.png" alt="Close Icon">
+        </button>
       </div>
       <div class="darker" id="darker" onclick="togglePopup()"></div>
+      <!-- Wrapper untuk ikon Search & Save -->
+      <div class="icons">
+        <div class="search" onclick="togglePopup()">
+          <img src="img/search.png" alt="Search">
+        </div>
+        <div class="save">
+          <img src="img/save.png" alt="Save">
+        </div>
+      </div>
     </nav>
+
+
   </header>
+
 
   <!-- Slider -->
   <section class="slider">

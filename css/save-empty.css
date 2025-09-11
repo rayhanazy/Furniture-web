@@ -1,0 +1,118 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inria Serif", serif;
+}
+
+body {
+  background: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  border-bottom: 1px solid #ccc;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo img {
+  width: 200px;
+  height: auto;
+}
+
+.back-nav a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #000;
+  letter-spacing: 2px;
+}
+
+/* Bookmark Header */
+.bookmark-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px;
+  border-bottom: 1px solid #ccc;
+}
+
+.bookmark-header h1 {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Content */
+.bookmark-content {
+  text-align: center;
+  margin: 80px 20px;
+}
+
+.bookmark-icon {
+  width: 60px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.empty-text {
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: #555;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  border-top: 1px solid #ccc;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footer-warning {
+  max-width: 70%;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.checkout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkout input {
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+}
+
+.checkout-btn {
+  background-color: #c7a278;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}

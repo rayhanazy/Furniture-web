@@ -266,7 +266,18 @@ header .user img:hover {
 header .icons {
   display: flex;
   align-items: center;
-  gap: 20px; /* Jarak antar ikon */
+  gap: 60px;
+}
+
+/* Ikon Save */
+header .save img {
+  width: 35px;
+  height: auto;
+  cursor: pointer;
+}
+
+header .save img:hover {
+  transform: scale(1.1);
 }
 
 /* Slider */

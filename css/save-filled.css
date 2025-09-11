@@ -1,0 +1,47 @@
+/* Bookmark Items Section */
+.bookmark-items {
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Bookmark Card */
+.bookmark-card {
+  display: flex;
+  gap: 20px;
+  border: 2px solid #c7a278;
+  border-radius: 12px;
+  padding: 20px;
+  align-items: flex-start;
+  background-color: #fff;
+}
+
+.bookmark-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.card-info h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.card-info p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.dimension {
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
