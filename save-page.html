@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save Page</title>
+  <link rel="stylesheet" href="css/save-page.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="img/logo.jpg" alt="Bengkel Kayoe">
+    </div>
+    <a href="index.html" class="back-btn">BACK ➝</a>
+  </header>
+
+  <!-- Content -->
+  <main>
+    <h3 class="bookmark-title">Bookmark</h3>
+    <div id="bookmarkContainer"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="attention">
+      <strong>ATTENTION!</strong><br>
+      Purchase details will be discussed by the WhatsApp admin in a private conversation, 
+      such as including prices and door-to-door processes.<br>
+      This feature is only to help us understand your order. At this stage, 
+      there are no transactions or bargains!
+    </div>
+    <div class="checkout">
+      <label>Items: <input type="text" id="itemCount" readonly></label>
+      <button id="checkoutBtn">Check Out</button>
+    </div>
+  </footer>
+
+  <script>
+    function renderSavedProducts() {
+      let container = document.getElementById("bookmarkContainer");
+      let saved = JSON.parse(localStorage.getItem("savedProducts")) || [];
+
+      document.getElementById("itemCount").value = saved.length;
+
+      if (saved.length === 0) {
+        container.innerHTML = `
+          <div class="empty">
+            <img src="img/saveempty.png" alt="Empty">
+            <p>YOUR BOOKMARK IS EMPTY</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = saved.map(p => `
+          <div class="product-card">
+            <img src="${p.image}" alt="${p.name}" class="product-img">
+            <div class="product-info">
+              <h4>${p.name}</h4>
+              <p>${p.desc}</p>
+              <small><b>DIMENSIONS:</b> ${p.dim}</small>
+            </div>
+            <button class="edit-btn" onclick="deleteProduct('${p.id}')">
+              <img src="img/cancel.png" alt="Delete">
+            </button>
+          </div>
+        `).join("");
+      }
+    }
+
+    function deleteProduct(id) {
+      let saved = JSON.parse(localStorage.getItem("savedProducts")) || [];
+      saved = saved.filter(p => p.id !== id);
+      localStorage.setItem("savedProducts", JSON.stringify(saved));
+      renderSavedProducts();
+    }
+
+    renderSavedProducts();
+  </script>
+</body>
+</html>

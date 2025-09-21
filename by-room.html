@@ -78,9 +78,28 @@
       <button><img src="img\mail.png" alt="logo"><a href="mailto:bengkelkayoe@gmail.com">Mail Us</a></button>
       <button><img src="img\googlemaps.png" alt="logo"><a href="https://maps.app.goo.gl/p67xtRg8B2VtmCLQ7"
           target="_blank">Map</a></button>
+      <button
+        onclick="saveProduct('P001', 'Sofa Elegan', 'img/sofa.jpg', 'Sofa nyaman untuk ruang tamu', '2300 x 1800 x 800 mm')">
+        <img src="img\saveproduct.png" alt="logo">Save
+      </button>
     </div>
     <p style="font-family: 'Abel'; font-size: 18px; font-weight: 400;">Category: Sofa</p>
   </section>
+
+  <script>
+    function saveProduct(id, name, image, desc, dim) {
+      let saved = JSON.parse(localStorage.getItem("savedProducts")) || [];
+
+      if (!saved.some(p => p.id === id)) {
+        saved.push({ id, name, image, desc, dim });
+        localStorage.setItem("savedProducts", JSON.stringify(saved));
+        alert("Produk berhasil disimpan ke bookmark!");
+      } else {
+        alert("Produk sudah ada di bookmark.");
+      }
+    }
+  </script>
+
   <section class="related-products">
     <h2>RELATED PRODUCT</h2>
     <div class="product-list">

@@ -92,7 +92,7 @@ nav {
   font-family: "Inria Serif", serif;
 }
 
-header nav a {
+header nav a.menu-link {
   text-decoration: none; /* Hilangkan garis bawah */
   color: #333; /* Warna teks */
   font-size: 22px; /* Ukuran font menu */
@@ -101,12 +101,12 @@ header nav a {
   padding: 10px 0;
 }
 
-header nav a:hover {
+header nav a.menu-link:hover {
   color: #000; /* Warna saat hover */
   transform: translateY(0) scale(1.1); /* Efek sedikit membesar */
 }
 
-header nav a:after {
+header nav a.menu-link:after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -117,7 +117,7 @@ header nav a:after {
   transition: width 0.3s ease;
 }
 
-header nav a:hover:after {
+header nav a.menu-link:hover:after {
   width: 100%; /* Animasi garis hover */
 }
 
