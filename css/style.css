@@ -1940,7 +1940,6 @@ header .save img:hover {
   }
   header {
     margin-bottom: 50px;
-    height: 90px;
   }
 
   .slider {
@@ -2151,6 +2150,11 @@ header .save img:hover {
   }
   .slider {
     height: 40vh; /* Kurangi tinggi slider */
+  }
+
+  header {
+    height: 100px;
+    padding: 0 20px
   }
   header .logo img {
     width: 200px;
