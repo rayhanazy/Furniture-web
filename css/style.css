@@ -1804,6 +1804,7 @@ header .save img:hover {
 
   .container {
     padding: 15px;
+    grid-template-columns: 1fr 1fr;
   }
 
   .card {
@@ -2034,8 +2035,9 @@ header .save img:hover {
   }
 
   .container {
-    grid-template-columns: 1fr; /* Ubah jadi satu kolom */
+    grid-template-columns: 1fr 1fr; /* Ubah jadi satu kolom */
     gap: 0;
+    padding: 0px;
   }
 
   .card {
@@ -2151,6 +2153,10 @@ header .save img:hover {
   }
   .slider {
     height: 40vh; 
+  }
+  .container {
+    grid-template-columns: 1fr;
+    
   }
   header {
     height: 100px;
