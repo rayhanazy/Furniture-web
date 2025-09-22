@@ -1847,6 +1847,7 @@ header .save img:hover {
 
   .shop-by-room h2 {
     font-size: 22px;
+    padding-bottom: 50px;
   }
 
   .rooms {
@@ -2091,7 +2092,7 @@ header .save img:hover {
   }
 
   .room {
-    width: 90%; /* Lebarkan agar menyesuaikan layar */
+    width: 90%; 
     height: auto;
   }
 
@@ -2146,12 +2147,11 @@ header .save img:hover {
 
 @media screen and (max-width: 576px) {
   .text h1 {
-    font-size: 50px; /* Perkecil teks agar tidak terlalu besar */
+    font-size: 50px; 
   }
   .slider {
-    height: 40vh; /* Kurangi tinggi slider */
+    height: 40vh; 
   }
-
   header {
     height: 100px;
     padding: 0 20px
@@ -2160,9 +2160,8 @@ header .save img:hover {
     width: 200px;
   }
   .dedicated-section {
-    height: auto; /* Biarkan menyesuaikan konten */
+    height: auto; 
   }
-
   .dedicated img {
     max-width: 100%;
     width: 250px;
