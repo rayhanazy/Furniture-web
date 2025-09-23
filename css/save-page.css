@@ -212,7 +212,6 @@ body.exit {
 }
 
 /* Footer */
-/* Container untuk Footer yang akan di-toggle */
 .footer-container {
   position: fixed;
   bottom: 0;
@@ -220,14 +219,14 @@ body.exit {
   width: 100%;
   z-index: 1000;
   transform: translateY(
-    calc(100% - 60px)
-  ); /* Sembunyikan footer, sisakan ruang untuk tombol */
+    calc(100% - 55px)
+  );
   transition: transform 0.5s ease-in-out;
 }
 
 /* Class saat footer terbuka */
 .footer-container.is-open {
-  transform: translateY(0); /* Bawa footer kembali ke posisi semula */
+  transform: translateY(0); 
 }
 
 /* Tombol toggle */
@@ -246,14 +245,12 @@ body.exit {
   width: 150px;
 }
 
-/* Mengubah arah panah saat footer terbuka */
 .toggle-footer-btn img {
   width: 20px;
-  transform: rotate(180deg); /* Pastikan tidak ada rotasi awal */
+  transform: rotate(180deg);
   transition: transform 0.3s ease-in-out;
 }
 
-/* Memutar panah 180 derajat saat footer terbuka */
 .footer-container.is-open .toggle-footer-btn img {
   transform: rotate(0deg);
 }
