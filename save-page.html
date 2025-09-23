@@ -1,69 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Save Page</title>
   <link rel="stylesheet" href="css/save-page.css">
 </head>
+
 <body>
   <!-- Header -->
   <header class="header">
     <div class="logo">
       <img src="img/logo.jpg" alt="Bengkel Kayoe">
     </div>
-    <a href="index.html" class="back-btn">BACK ➝</a>
+    <a href="index.html" class="back-btn">BACK <img src="img/back.png" alt="BACK"></a>
   </header>
 
   <!-- Content -->
   <main>
-    <h3 class="bookmark-title">Bookmark</h3>
+    <h3 class="bookmark-title">Bookmark <img src="img/edit.png" alt="edit"></h3>
     <div id="bookmarkContainer"></div>
   </main>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="attention">
-      <strong>ATTENTION!</strong><br>
-      Purchase details will be discussed by the WhatsApp admin in a private conversation, 
-      such as including prices and door-to-door processes.<br>
-      This feature is only to help us understand your order. At this stage, 
-      there are no transactions or bargains!
+      <h2>ATTENTION!</h2><br>
+      <p>Purchase details will be discussed by the WhatsApp admin in a private conversation, such as discussing prices
+        and
+        order quantities. This feature is only to help us understand your order. At this stage, there are no
+        transactions
+        or bargains!</p>
     </div>
     <div class="checkout">
-      <label>Items: <input type="text" id="itemCount" readonly></label>
-      <button id="checkoutBtn">Check Out</button>
+      <input type="text" id="itemCount" readonly>
+      <button id="checkoutBtn">Check Out <img src="img/checkout.png" alt="checkout"></button>
     </div>
   </footer>
 
   <script>
+    // JavaScript yang sudah diperbarui
     function renderSavedProducts() {
       let container = document.getElementById("bookmarkContainer");
       let saved = JSON.parse(localStorage.getItem("savedProducts")) || [];
 
-      document.getElementById("itemCount").value = saved.length;
+      // Perbaikan di sini: Mengatur nilai input dengan teks dan jumlah item
+      document.getElementById("itemCount").value = "Items: " + saved.length;
 
       if (saved.length === 0) {
         container.innerHTML = `
-          <div class="empty">
-            <img src="img/saveempty.png" alt="Empty">
-            <p>YOUR BOOKMARK IS EMPTY</p>
-          </div>
+            <div class="empty">
+                <img src="img/saveempty.png" alt="Empty">
+                <p>YOUR BOOKMARK IS EMPTY</p>
+            </div>
         `;
       } else {
+        // Perbaiki bagian ini di dalam fungsi renderSavedProducts()
         container.innerHTML = saved.map(p => `
-          <div class="product-card">
-            <img src="${p.image}" alt="${p.name}" class="product-img">
-            <div class="product-info">
-              <h4>${p.name}</h4>
-              <p>${p.desc}</p>
-              <small><b>DIMENSIONS:</b> ${p.dim}</small>
+    <div class="product-card">
+        <div class="product-logo-container">
+            <img src="img/logo2.jpg" alt="Bengkel Kayoe Logo">
+        </div>
+        <div class="product-details-container">
+            <h4>${p.name}</h4>
+            <p>${p.desc}</p>
+            <div class="product-dimensions">
+                <small>DIMENSIONS</small> <br>
+                <small>${p.dim}</small>
             </div>
-            <button class="edit-btn" onclick="deleteProduct('${p.id}')">
-              <img src="img/cancel.png" alt="Delete">
-            </button>
-          </div>
-        `).join("");
+        </div>
+        <button class="edit-btn" onclick="deleteProduct('${p.id}')">
+            <img src="img/cancel.png" alt="Delete">
+        </button>
+    </div>
+`).join("");
       }
     }
 
@@ -77,4 +88,5 @@
     renderSavedProducts();
   </script>
 </body>
+
 </html>
