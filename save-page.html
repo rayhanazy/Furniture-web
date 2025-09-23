@@ -24,68 +24,82 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="attention">
-      <h2>ATTENTION!</h2><br>
-      <p>Purchase details will be discussed by the WhatsApp admin in a private conversation, such as discussing prices
-        and
-        order quantities. This feature is only to help us understand your order. At this stage, there are no
-        transactions
-        or bargains!</p>
-    </div>
-    <div class="checkout">
-      <input type="text" id="itemCount" readonly>
-      <button id="checkoutBtn">Check Out <img src="img/checkout.png" alt="checkout"></button>
-    </div>
-  </footer>
+  <div class="footer-container" id="footerContainer">
+    <button class="toggle-footer-btn" id="toggleFooterBtn">
+      <img src="img/down-arrow.png" alt="Toggle">
+    </button>
+
+    <footer class="footer">
+      <div class="attention">
+        <h2>ATTENTION!</h2><br>
+        <p>Purchase details will be discussed by the WhatsApp admin in a private conversation, such as discussing prices
+          and
+          order quantities. This feature is only to help us understand your order. At this stage, there are no
+          transactions
+          or bargains!</p>
+      </div>
+      <div class="checkout">
+        <input type="text" id="itemCount" readonly>
+        <button id="checkoutBtn">Check Out <img src="img/checkout.png" alt="checkout"></button>
+      </div>
+    </footer>
+  </div>
 
   <script>
-    // JavaScript yang sudah diperbarui
-    function renderSavedProducts() {
-      let container = document.getElementById("bookmarkContainer");
-      let saved = JSON.parse(localStorage.getItem("savedProducts")) || [];
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fungsi untuk mengontrol footer
+      const toggleFooterBtn = document.getElementById("toggleFooterBtn");
+      const footerContainer = document.getElementById("footerContainer");
 
-      // Perbaikan di sini: Mengatur nilai input dengan teks dan jumlah item
-      document.getElementById("itemCount").value = "Items: " + saved.length;
+      toggleFooterBtn.addEventListener("click", () => {
+        footerContainer.classList.toggle("is-open");
+      });
 
-      if (saved.length === 0) {
-        container.innerHTML = `
-            <div class="empty">
-                <img src="img/saveempty.png" alt="Empty">
-                <p>YOUR BOOKMARK IS EMPTY</p>
-            </div>
-        `;
-      } else {
-        // Perbaiki bagian ini di dalam fungsi renderSavedProducts()
-        container.innerHTML = saved.map(p => `
-    <div class="product-card">
-        <div class="product-logo-container">
-            <img src="img/logo2.jpg" alt="Bengkel Kayoe Logo">
-        </div>
-        <div class="product-details-container">
-            <h4>${p.name}</h4>
-            <p>${p.desc}</p>
-            <div class="product-dimensions">
-                <small>DIMENSIONS</small> <br>
-                <small>${p.dim}</small>
-            </div>
-        </div>
-        <button class="edit-btn" onclick="deleteProduct('${p.id}')">
-            <img src="img/cancel.png" alt="Delete">
-        </button>
-    </div>
-`).join("");
+      // Fungsi untuk menampilkan produk
+      function renderSavedProducts() {
+        let container = document.getElementById("bookmarkContainer");
+        let saved = JSON.parse(localStorage.getItem("savedProducts")) || [];
+
+        document.getElementById("itemCount").value = "Items: " + saved.length;
+
+        if (saved.length === 0) {
+          container.innerHTML = `
+                <div class="empty">
+                    <img src="img/saveempty.png" alt="Empty">
+                    <p>YOUR BOOKMARK IS EMPTY</p>
+                </div>
+            `;
+        } else {
+          container.innerHTML = saved.map(p => `
+                <div class="product-card">
+                    <div class="product-logo-container">
+                        <img src="img/logo2.jpg" alt="Bengkel Kayoe Logo">
+                    </div>
+                    <div class="product-details-container">
+                        <h4>${p.name}</h4>
+                        <p>${p.desc}</p>
+                        <div class="product-dimensions">
+                            <small>DIMENSIONS</small>
+                            <small>${p.dim}</small>
+                        </div>
+                    </div>
+                    <button class="edit-btn" onclick="deleteProduct('${p.id}')">
+                        <img src="img/cancel.png" alt="Delete">
+                    </button>
+                </div>
+            `).join("");
+        }
       }
-    }
 
-    function deleteProduct(id) {
-      let saved = JSON.parse(localStorage.getItem("savedProducts")) || [];
-      saved = saved.filter(p => p.id !== id);
-      localStorage.setItem("savedProducts", JSON.stringify(saved));
+      window.deleteProduct = (id) => {
+        let saved = JSON.parse(localStorage.getItem("savedProducts")) || [];
+        saved = saved.filter(p => p.id !== id);
+        localStorage.setItem("savedProducts", JSON.stringify(saved));
+        renderSavedProducts();
+      };
+
       renderSavedProducts();
-    }
-
-    renderSavedProducts();
+    });
   </script>
 </body>
 
