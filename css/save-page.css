@@ -309,10 +309,7 @@ body.exit {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   font-size: 18px;
   letter-spacing: 2px;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin: 5px;
   padding: 5px 20px;
   border: none;
   background: #c8a676;
@@ -321,4 +318,135 @@ body.exit {
   border-radius: 3px;
   display: flex;
   align-items: center;
+}
+
+
+/* ========================================= */
+/* Media Queries untuk Desain Responsif */
+/* ========================================= */
+
+@media screen and (max-width: 768px) {
+  body {
+    padding-bottom: 200px; 
+  }
+
+  /* Header */
+  .header {
+    height: auto;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .logo img {
+    width: 200px;
+  }
+  
+  .back-btn {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .back-btn img {
+    width: 30px;
+  }
+
+  /* Title */
+  .bookmark-title {
+    margin: 10px 20px 15px;
+    font-size: 18px;
+  }
+
+  .bookmark-title img {
+    width: 25px;
+  }
+
+  /* Product Card */
+  .product-card {
+    flex-direction: column; /* Ubah tata letak menjadi kolom */
+    text-align: center;
+    margin: 15px 20px;
+    padding: 20px;
+  }
+  
+  .product-logo-container {
+    min-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .product-details-container {
+    text-align: left;
+  }
+
+  .product-details-container p,
+  .product-details-container small {
+    font-size: 16px;
+    letter-spacing: normal;
+  }
+
+  .edit-btn {
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Empty State */
+  .empty {
+    margin: 200px 0 0;
+  }
+
+  .empty p {
+    font-size: 20px;
+  }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .attention {
+    order: 1; 
+  }
+
+  .attention h2 {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  
+  .attention p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .checkout {
+    order: 2; 
+    font-size: 16px;
+  }
+  
+  .checkout input {
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  #checkoutBtn {
+    width: 100%;
+    font-size: 16px;
+    justify-content: center;
+  }
+
+  /* Tombol Toggle Footer */
+  .footer-container {
+    transform: translateY(calc(100% - 50px)); 
+  }
+
+  .toggle-footer-btn {
+    width: 120px;
+    padding: 8px 15px;
+    top: -39px;
+  }
+
+  .toggle-footer-btn img {
+    width: 18px;
+  }
 }
