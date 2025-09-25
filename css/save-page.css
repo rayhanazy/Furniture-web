@@ -105,12 +105,55 @@ body.exit {
   padding: 20px;
   display: flex;
   gap: 20px;
-  align-items: flex-start;
+  align-items: center; /* Tengah vertikal agar checkbox sejajar */
   position: relative;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
   transition: box-shadow 0.3s ease-in-out;
   -webkit-tap-highlight-color: transparent;
+}
+
+.title-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#deleteCheckedBtn {
+  width: 28px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  display: none;
+  opacity: 0;
+}
+
+body.delete-mode #deleteCheckedBtn {
+  display: block;
+  opacity: 1;
+}
+
+.delete-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  display: none;
+}
+
+body.delete-mode .delete-checkbox {
+  display: block;
+}
+
+.edit-btn {
+  display: none !important;
+}
+
+body.delete-mode #toggleDeleteMode {
+  transform: none;
+  filter: none;
 }
 
 .product-logo-container {
@@ -191,7 +234,6 @@ body.exit {
   width: 18px;
 }
 
-/* Empty State */
 .empty {
   display: flex;
   text-align: center;
@@ -224,7 +266,6 @@ body.exit {
   transition: transform 0.5s ease-in-out;
 }
 
-/* Class saat footer terbuka */
 .footer-container.is-open {
   transform: translateY(0);
 }
@@ -430,6 +471,73 @@ body.exit {
   display: none;
 }
 
+/* Gaya Modal Konfirmasi Baru */
+.modal-confirm {
+  display: none;
+  position: fixed;
+  z-index: 3000; /* Lebih tinggi dari modal lain */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-confirm-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#confirmTitle {
+  font-family: "Abel", sans-serif;
+  letter-spacing: 2px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+#confirmMessage {
+  font-family: "Abel", sans-serif;
+  font-size: 18px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.confirm-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  flex-grow: 1;
+  letter-spacing: 1px;
+}
+
+.cancel-btn {
+  background-color: #ddd;
+  color: #333;
+}
+
+.action-btn {
+  background-color: #dc3545; /* Merah untuk aksi Hapus */
+  color: white;
+}
+
 /* ========================================= */
 /* Media Queries untuk Desain Responsif */
 /* ========================================= */
@@ -437,7 +545,7 @@ body.exit {
 @media screen and (max-width: 768px) {
   body {
     padding-bottom: 200px;
-    -webkit-tap-highlight-color: transparent; 
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Header */
@@ -473,10 +581,15 @@ body.exit {
   /* Product Card */
   .product-card {
     flex-direction: row;
-    text-align: left;
-    margin: 15px 20px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .delete-checkbox {
+    width: 20px;
+    height: 20px;
+    margin: 0;
   }
 
   .product-logo-container {
