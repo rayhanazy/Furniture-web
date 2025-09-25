@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <small>DIMENSIONS</small> <br>
                             <small>${p.dim}</small>
                         </div>
-                        <div class="click-for-details">Ketuk untuk detail</div>
+                        <div class="click-for-details">Click for details</div>
                     </div>
                 </div>
             `).join("");
