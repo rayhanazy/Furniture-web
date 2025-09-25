@@ -281,6 +281,12 @@ body.exit {
   line-height: 1.6;
   letter-spacing: 2px;
   max-width: 90%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .checkout {
@@ -295,20 +301,22 @@ body.exit {
 
 .checkout input {
   font-size: 18px;
-  padding: 5px 12px;
+  padding: 10px;
+  width: 220px;
   border: 1px solid #000000;
   border-radius: 3px;
-  margin-left: 5px;
+  margin: 0;
+  text-align: center;
 }
 
 #checkoutBtn {
-  max-width: auto;
-  width: 246px;
+  width: 220px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   font-size: 18px;
   letter-spacing: 2px;
-  margin: 5px;
-  padding: 5px 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 10px 20px;
   border: none;
   background: #c8a676;
   color: #fff;
@@ -316,6 +324,7 @@ body.exit {
   border-radius: 3px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 /* Gaya Modal */
@@ -540,6 +549,8 @@ body.exit {
 
   .checkout input {
     font-size: 16px;
+    padding: 8px 12px;
+    width: 100%;
     text-align: center;
   }
 
@@ -547,6 +558,8 @@ body.exit {
     width: 100%;
     font-size: 16px;
     justify-content: center;
+    padding: 8px 20px;
+    margin-top: 10px;
   }
 
   /* Tombol Toggle Footer */
