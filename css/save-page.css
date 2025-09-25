@@ -165,7 +165,6 @@ body.delete-mode #toggleDeleteMode {
 }
 
 .product-logo-container img {
-  margin-top: 5px;
   width: 150px;
   height: auto;
   object-fit: contain;
